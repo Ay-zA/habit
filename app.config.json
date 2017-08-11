@@ -1,0 +1,20 @@
+{
+  "root": "app",
+  "main": "index.js",
+  "outDir": "build",
+  "publicDir": "public",
+  "wds": {
+    "host": "127.0.0.1",
+    "port": "8000"
+  },
+  "client": {
+    "dir": "client",
+    "main": "index.js",
+    "index": "index.html"
+  },
+  "server": {
+    "dbConnectionURL": "mongodb://localhost:27017/habit",
+    "main": "index.js",
+    "dir": "server"
+  }
+}

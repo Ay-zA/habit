@@ -1,0 +1,15 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "watch": [
+    "app/server/db.js",
+    "app/server/index.js",
+    "app/server/server.js",
+    "app/server/webpack.middleware.js",
+    "webpack.config.dev.babel.js"
+  ],
+  "ext": "js json"
+}

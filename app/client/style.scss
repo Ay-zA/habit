@@ -1,0 +1,30 @@
+html ,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#app {
+  height: 100%;
+}
+
+.wraper {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

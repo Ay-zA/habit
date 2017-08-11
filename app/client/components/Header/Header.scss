@@ -1,0 +1,36 @@
+@import 'variables';
+
+.app-title {
+  display: inline-block;
+  color: $text-white;
+  margin-right: 1em;
+}
+
+.nav-bar {
+  background-color: $accent;
+  padding: 0 10%;
+
+  ul {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline;
+      height: 100%;
+      margin-right: 5px;
+
+      a {
+        color: $text-white;
+        padding: 10px 15px;
+        display: inline-block;
+        border-radius: 5px;
+      }
+
+      .active {
+        background: $accent-darken;
+      }
+    }
+  }
+}

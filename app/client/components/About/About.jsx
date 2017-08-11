@@ -1,0 +1,12 @@
+import React, { Component } from 'react';
+import './About.scss';
+
+export default class About extends Component {
+  render() {
+    return (
+      <div>
+        <h1 className="title">Hello from <span>React + Mongo + Express + Node + Webpack + HMRE3</span></h1>
+      </div>
+    );
+  }
+}

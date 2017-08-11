@@ -1,0 +1,109 @@
+{
+  "name": "habit",
+  "version": "1.0.0",
+  "description": "I'll just remind you habits",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src --ext .jsx,.js",
+    "clean": "rimraf ./build",
+    "build:watch": "npm run clean && cross-env NODE_ENV=development && webpack -d --watch",
+    "build:dev": "npm run clean && cross-env NODE_ENV=development && webpack --config webpack.config.dev.babel.js -d",
+    "build:prod": "npm run clean && cross-env NODE_ENV=production && webpack --config webpack.config.prod.babel.js -p",
+    "server:dev": "cross-env NODE_ENV=dev node app/index.js --open",
+    "server:node": "cross-env NODE_ENV=node webpack --watch",
+    "server:prod": "cross-env NODE_ENV=prod node app/index.js",
+    "start": "nodemon -q app/index.js --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "rc-autocomplete"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/frontendmonster/habit.git"
+  },
+  "keywords": [
+    "habit",
+    "todo",
+    "reminder",
+    "cross-platform",
+    "minimal"
+  ],
+  "author": "S-Kill <frontendmonster@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontendmonster/habit/issues"
+  },
+  "homepage": "https://github.com/frontendmonster/habit#readme",
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "react-hot-loader/babel",
+      "add-module-exports",
+      [
+        "babel-plugin-root-import",
+        [
+          {
+            "rootPathPrefix": "@",
+            "rootPathSuffix": "app/server"
+          },
+          {
+            "rootPathPrefix": "~",
+            "rootPathSuffix": "./"
+          }
+        ]
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "body-parser": "^1.17.2",
+    "chalk": "^2.0.1",
+    "compression": "^1.7.0",
+    "cross-env": "^5.0.1",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.4",
+    "morgan": "^1.8.2",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "sanitize-html": "^1.14.1",
+    "serve-favicon": "^2.4.3",
+    "slug": "^0.9.1",
+    "winston": "^2.3.1",
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "7",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.3.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.29.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "opn": "^5.1.0",
+    "postcss-loader": "^2.0.6",
+    "react-hot-loader": "next",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.4.1",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2"
+  }
+}
