@@ -30,7 +30,7 @@ app.use(favicon(pathes.appFavIcon));
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use('/api', function(req, res, next) {
-  require('@/routes/post.routes')(req, res, next);
+  require('@/routes/todo.routes')(req, res, next);
 });
 app.use(logError);
 app.use(handleError);

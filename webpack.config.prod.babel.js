@@ -75,14 +75,7 @@ export default {
       pathes.app,
       pathes.appNodeModules
     ],
-    alias: {
-      config: pathes.config,
-      src: pathes.client,
-      assets: pathes.clientAssets,
-      components: pathes.clientComponents,
-      routes: pathes.clientRoutes,
-      $redux: pathes.clientRedux
-    }
+    alias: pathes.alias
   }
 
 };

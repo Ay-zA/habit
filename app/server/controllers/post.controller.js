@@ -7,7 +7,7 @@ export function getPosts(req, res, next) {
     .find()
     .sort('-dateAdded')
     .then(posts => res.json({ posts }))
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
       return next(err);
     });
@@ -30,7 +30,7 @@ export function addPost(req, res, next) {
   newPost
     .save()
     .then(saved => res.json({ post: saved }))
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
       return next(err);
     });

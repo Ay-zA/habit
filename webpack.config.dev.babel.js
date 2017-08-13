@@ -13,7 +13,7 @@ export default {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?reload=true',
     pathes.clientMain
   ],
   output: {
@@ -82,14 +82,6 @@ export default {
       pathes.app,
       pathes.appNodeModules
     ],
-    alias: {
-      config: pathes.config,
-      src: pathes.client,
-      assets: pathes.clientAssets,
-      components: pathes.clientComponents,
-      containers: pathes.clientContainers,
-      routes: pathes.clientRoutes,
-      $redux: pathes.clientRedux
-    }
+    alias: pathes.alias
   }
 };
