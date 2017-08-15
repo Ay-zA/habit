@@ -1,5 +1,5 @@
 import log from 'winston';
-import { chError, chSuccess, chWarning, chProcessing } from './chalk'; // eslint-disable-line no-unused-vars
+import { chError, chSuccess, chWarning, chProcessing } from './chalk';
 import { app } from '~/configs';
 
 log.cli();
@@ -7,9 +7,13 @@ log.cli();
 export function logServerConfig(err) {
   if (err) log.error(err);
   const url = `http://${app.host}:${app.port}`;
-
-  log.info(chWarning('Environment:'), app.env);
   log.info(chSuccess('Server listening at: ') + url);
+  log.info(chWarning('Environment:'), app.env);
+  log.info(chSuccess('---'));
+}
+
+export function logChange(path) {
+  log.info(`${path} has been changed.`);
 }
 
 export function logError(err, req, res, next) {
@@ -17,4 +21,4 @@ export function logError(err, req, res, next) {
   next(err);
 }
 
-export { log };
+export { log, chError, chSuccess, chWarning, chProcessing };

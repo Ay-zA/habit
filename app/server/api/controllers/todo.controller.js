@@ -1,4 +1,4 @@
-import Todo from '@/models/todo.model';
+import Todo from '@/api/models/todo.model';
 
 export function getTodos(req, res, next) {
   Todo
@@ -25,4 +25,8 @@ export function addTodo(req, res, next) {
       res.status(500);
       return next(err);
     });
+}
+
+export function deleteTodo(req, res, next) {
+
 }

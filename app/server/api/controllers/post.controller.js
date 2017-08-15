@@ -39,14 +39,14 @@ export function addPost(req, res, next) {
 export function getPost(req, res, next) {
   Post
     .findById(req.params.id)
-    .then((post) => {
+    .then(post => {
       if (post) {
         res.json({ post });
       } else {
         res.status(404).end();
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
       next(err);
     });
@@ -55,14 +55,14 @@ export function getPost(req, res, next) {
 export function deletePost(req, res, next) {
   Post
     .findOneAndRemove({ _id: req.params.id })
-    .then((post) => {
+    .then(post => {
       if (post) {
         res.status(200).end();
       } else {
         res.status(404).end();
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
       next(err);
     });

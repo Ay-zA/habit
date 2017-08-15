@@ -5,11 +5,13 @@
     "js": "node --harmony"
   },
   "watch": [
-    "app/server/db.js",
-    "app/server/index.js",
-    "app/server/server.js",
-    "app/server/webpack.middleware.js",
-    "webpack.config.dev.babel.js"
+    "app/server/",
+    "package.json",
+    "configs/",
+    "app.config.json",
+    "webpack.config.dev.babel.js",
+    "webpack.config.prod.babel.js"
   ],
+  "ignore": ["app/server/api"],
   "ext": "js json"
 }

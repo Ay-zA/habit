@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose
   .connect(app.dbConnectionURL, { useMongoClient: true })
   .then(() => log.info(chSuccess('Mongoose connected to: ') + app.dbConnectionURL))
-  .catch((err) => {
+  .catch(err => {
     log.error(chError('Mongoose throw error on connect to: ') + app.dbConnectionURL);
     throw err;
   });

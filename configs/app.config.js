@@ -9,9 +9,8 @@ const arg = yargs.argv;
 const isValidPort = port => !isNaN(parseInt(port, 10));
 
 const ENVS = {
-  PROD: 'prod',
-  DEV: 'dev',
-  NODE: 'node'
+  PROD: 'production',
+  DEV: 'development'
 };
 
 const openBrowser = arg.open;
