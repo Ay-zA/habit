@@ -1,7 +1,7 @@
 import opn from 'opn';
 import http from 'http';
 import Express from 'express';
-
+import Celebrate from 'celebrate';
 import configMiddlewares, { webpack } from '@/middlewares';
 import { logServerConfig, logError } from '@/util/logger';
 import { handleServerError, handleError } from '@/util/handle-error';
@@ -20,6 +20,7 @@ app.use('/api', (req, res, next) => {
 app.set('port', config.port);
 
 app.use(Express.static(pathes.appPublic));
+app.use(Celebrate.errors());
 app.use(logError);
 app.use(handleError);
 

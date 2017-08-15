@@ -17,8 +17,8 @@ export function logChange(path) {
 }
 
 export function logError(err, req, res, next) {
-  log.error(err.stack);
-  next(err);
+  log.error(err);
+  next();
 }
 
 export { log, chError, chSuccess, chWarning, chProcessing };

@@ -16,23 +16,19 @@ export class Todos extends Component {
     super(props, context);
 
     this.state = {
-      todo: { _id: 0, title: null },
-      counter: 0
+      todo: { title: null }
     };
   }
 
   onTitleChange(e) {
     const todo = this.state.todo;
     todo.title = e.target.value;
-    todo._id = this.state.counter + 1;
     this.setState({ todo });
   }
 
   onAddTodoClick(e) {
-    let counter = this.state.counter + 1;
-    this.setState({ counter });
     this.props.actions.createTodo(this.state.todo);
-    this.setState({ todo: { title: null, _id: this.state.counter + 1 } });
+    this.setState({ todo: { title: null } });
     this.inputTitle.value = '';
     this.inputTitle.focus();
   }
@@ -53,7 +49,7 @@ export class Todos extends Component {
         <h1>Todos</h1>
         {::this.renderTodos()}
         <input
-          ref={ (el) => { this.inputTitle = el; }}
+          ref={ el => { this.inputTitle = el; }}
           type="text"
           onChange={::this.onTitleChange}
         />

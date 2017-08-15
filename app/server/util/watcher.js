@@ -11,7 +11,7 @@ watcher.on('ready', function() {
     Object.keys(require.cache).forEach(function(id) {
       if (/[\/\\](api)[\/\\]/.test(id)) {
         delete require.cache[id];
-        console.log(`Deleting ${id}`);
+        console.log(`Updating ${id.split('\\').slice(-1)}`);
       }
     });
   });

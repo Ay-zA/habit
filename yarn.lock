@@ -1233,6 +1233,13 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
+celebrate@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/celebrate/-/celebrate-4.0.1.tgz#0c36f2b59ead2e1161c45dd3a8398dc248b2265a"
+  dependencies:
+    escape-html "1.0.3"
+    fastseries "1.7.2"
+
 center-align@^0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/center-align/-/center-align-0.1.3.tgz#aa0d32629b6ee972200411cbd4461c907bc2b7ad"
@@ -2063,7 +2070,7 @@ es6-weak-map@^2.0.1:
     es6-iterator "^2.0.1"
     es6-symbol "^3.1.1"
 
-escape-html@~1.0.3:
+escape-html@1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
@@ -2324,6 +2331,13 @@ fast-levenshtein@~2.0.4:
 fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
+
+fastseries@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/fastseries/-/fastseries-1.7.2.tgz#d22ce13b9433dff3388d91dbd6b8bda9b21a0f4b"
+  dependencies:
+    reusify "^1.0.0"
+    xtend "^4.0.0"
 
 fbjs@^0.8.9:
   version "0.8.14"
@@ -4994,6 +5008,10 @@ restore-cursor@^2.0.0:
   dependencies:
     onetime "^2.0.0"
     signal-exit "^3.0.2"
+
+reusify@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.2.tgz#e3ca4a613e64daac35d40ff34819e72776bf5d85"
 
 right-align@^0.1.1:
   version "0.1.3"
