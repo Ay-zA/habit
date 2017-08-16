@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import celebrate from 'celebrate';
-import todoValidation from '@/api/validators/todo.validator';
-import * as TodoController from '@/api/controllers/todo.controller';
+import todoValidation from './todo.validator';
+import * as TodoController from './todo.controller';
 
 const router = new Router();
 router.get('/', TodoController.getTodos);
