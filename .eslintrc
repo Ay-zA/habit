@@ -93,7 +93,7 @@
     "no-implicit-coercion": [1,{"boolean":true,"number":true,"string":true}],
     # "no-implicit-globals": 0,
     "no-implied-eval": 1,
-    "no-invalid-this": 1,
+    # "no-invalid-this": 0,
     "no-iterator": 1,
     "no-labels": 1,
     "no-lone-blocks": 1,
