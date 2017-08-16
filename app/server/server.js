@@ -25,7 +25,7 @@ app.use(logError);
 app.use(handleError);
 
 if (config.isDev) {
-  app.use('*', webpack.html);
+  app.get(/^(?!\/api).*/g, webpack.html);
 
   webpack.devMiddleware.waitUntilValid(function() {
     logServerConfig();
