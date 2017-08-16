@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
+import '@/util/time';
 
 const UserSchema = new Schema({
   email: {
@@ -38,7 +39,8 @@ UserSchema.methods = {
   },
   createToken() {
     return jwt.sign({
-      _id: this._id
+      _id: this._id,
+      exp: Date.tomorrow(),
     }, process.env.JWT_SECRET);
   },
   toJSON() {
