@@ -16,9 +16,9 @@ export function logChange(path) {
   log.info(`${path} has been changed.`);
 }
 
-export function logError(err, req, res, next) {
-  log.error(err);
-  next();
+export function logError(error, req, res, next) {
+  log.error(error);
+  next(error);
 }
 
 export { log, chError, chSuccess, chWarning, chProcessing };

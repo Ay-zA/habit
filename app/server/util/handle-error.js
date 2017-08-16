@@ -1,9 +1,10 @@
 import { log } from '@/util/logger';
 
-export function handleError(req, res, next) {
+export function handleError(error, req, res, next) {
   if (res.statusCode === 500) {
-    res.json({
-      message: 'Api error'
+    return res.json({
+      message: 'Api error',
+      error
     });
   }
 
