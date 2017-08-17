@@ -8,7 +8,7 @@ const GLOBALS = {
 };
 
 export default {
-  devtool: 'eval-source-map',
+  devtool: '#eval-source-map',
   target: 'web',
   entry: [
     'babel-polyfill',

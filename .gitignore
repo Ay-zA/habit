@@ -1,6 +1,8 @@
 node_modules/
 build/
 
+.vscode
+
 *.log
 *.env
 
@@ -9,4 +11,4 @@ Thumbs.db
 
 npm-debug.log
 
-.importjs.json
+.flowconfig
