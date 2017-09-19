@@ -6,6 +6,8 @@
     "es6": true
   },
   "parserOptions": {
+    "allowImportExportEverywhere": false,
+    "codeFrame": false,
     "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -53,7 +55,7 @@
     # "no-unsafe-finally": 2,
     # "no-unsafe-negation": 0,
     "use-isnan": 1,
-    'valid-jsdoc': [1, {
+    "valid-jsdoc": [1, {
       "requireParamDescription": false,
       "requireReturnDescription": false,
       "requireReturn": false,
@@ -137,7 +139,7 @@
     # Strict Mode
     # -----------
 
-    # 'script': 0,
+    # "script": 0,
     "strict": [1,"never"],
 
     # ---------
@@ -154,7 +156,7 @@
     "no-undef": 1,
     "no-undef-init": 1,
     "no-undefined": 1,
-    'no-unused-vars': [1, {args: 'none'}],
+    "no-unused-vars": [1, {args: "none"}],
     "no-use-before-define": 1,
 
     # --------------------
@@ -196,7 +198,7 @@
     "computed-property-spacing": [1,"never"],
     # "consistent-this": [0,"_this"],
     "eol-last": 1,
-    'func-call-spacing': 1,
+    "func-call-spacing": 1,
     # "func-name-matching": 0,
     # "func-names": [0, "as-needed"],
     # "func-style": [0,"expression"],
