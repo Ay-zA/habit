@@ -9,7 +9,7 @@ export function logServerConfig(err) {
   const url = `http://${app.host}:${app.port}`;
   log.info(chSuccess('Server listening at: ') + url);
   log.info(chWarning('Environment:'), app.env);
-  log.info(chSuccess('---'));
+  log.info(chSuccess('---\n'));
 }
 
 export function logChange(path) {

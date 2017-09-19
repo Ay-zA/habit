@@ -1,10 +1,10 @@
 import helmet from 'helmet';
-import morgan from 'morgan';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import { app as config, pathes } from '~/configs';
+import morgan from './morgan';
 import webpack from './webpack.middleware';
 
 export default app => {
@@ -14,7 +14,12 @@ export default app => {
   }
 
   if (config.isDev) {
-    app.use(morgan(':remote-addr - :remote-user | :method :url :status | :response-time ms'));
+    // app.use(
+    //   morgan(
+    //     ':remote-addr - :remote-user | :method :url :status | :response-time ms'
+    //   )
+    // );
+    app.use(morgan);
     app.use(webpack.devMiddleware);
     app.use(webpack.hotMiddleware);
   }
