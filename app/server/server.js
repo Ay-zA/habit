@@ -28,7 +28,6 @@ if (config.isDev) {
   app.get(/^(?!\/api).*/g, webpack.html);
 
   webpack.devMiddleware.waitUntilValid(function() {
-    logServerConfig();
     const url = config.uri;
 
     if (config.openBrowser) {
@@ -40,4 +39,4 @@ if (config.isDev) {
 const server = http.createServer(app);
 
 server.on('error', handleServerError);
-server.listen(config.port);
+server.listen(config.port, logServerConfig);
