@@ -12,7 +12,7 @@
     "server:dev": "cross-env NODE_ENV=dev node app/index.js --open",
     "server:node": "cross-env NODE_ENV=node webpack --watch",
     "server:prod": "cross-env NODE_ENV=prod node app/index.js",
-    "start": "nodemon -q app/index.js",
+    "start": "cross-env NODE_ENV=development && nodemon -q app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "flow:start": "flow start",
     "flow:stop": "flow stop",
@@ -23,7 +23,13 @@
     "type": "git",
     "url": "git+ssh://git@github.com/frontendmonster/habit.git"
   },
-  "keywords": ["habit", "todo", "reminder", "cross-platform", "minimal"],
+  "keywords": [
+    "habit",
+    "todo",
+    "reminder",
+    "cross-platform",
+    "minimal"
+  ],
   "author": "S-Kill <frontendmonster@gmail.com>",
   "license": "ISC",
   "bugs": {
