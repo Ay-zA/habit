@@ -24,7 +24,7 @@ export default app => {
     app.use(webpack.hotMiddleware);
   }
 
-  app.use(favicon(pathes.appFavIcon));
+  app.use(favicon(pathes.favicon));
   app.use(bodyParser.json({ limit: '20mb' }));
   app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
   app.use(passport.initialize());

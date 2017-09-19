@@ -17,7 +17,7 @@ export default {
     pathes.clientMain
   ],
   output: {
-    path: pathes.appBuild,
+    path: pathes.build,
     publicPath: '/',
     filename: '[name].[hash].js',
     sourceMapFilename: '[name].[hash].map'
@@ -25,7 +25,7 @@ export default {
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
     new HtmlWebpackPlugin({
-      template: pathes.clientHtml,
+      template: pathes.index,
       minify: {
         removeComments: true,
         collapseWhitespace: true
@@ -57,7 +57,7 @@ export default {
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'application/font-woff' } },
       { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'application/octet-stream' } },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'image/svg+xml' } },
-      { test: /\.(jpe?g|png|gif|ico)$/i, loader: 'file-loader', query: { limit: 10000, name: pathes.resolveBuild('/img/[name].[hash:7].[ext]') } },
+      { test: /\.(jpe?g|png|gif|ico)$/i, loader: 'file-loader', query: { limit: 10000, name: pathes.resolveBuild('assets/img/[name].[hash:7].[ext]') } },
       {
         test: /(\.css|\.scss|\.sass)$/,
         loaders: ['style-loader', 'css-loader',
@@ -70,7 +70,7 @@ export default {
           },
           {
             loader: 'sass-loader',
-            options: { includePaths: [pathes.clientIncludePath], sourceMap: true }
+            options: { includePaths: [pathes.sassIncludePath], sourceMap: true }
           }
         ]
       }

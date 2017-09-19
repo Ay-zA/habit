@@ -2,7 +2,7 @@ import React from 'react';
 import { render as renderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from 'containers/App/App';
-import './style.scss';
+import '../public/style.scss';
 
 const render = Component => {
   renderDOM(

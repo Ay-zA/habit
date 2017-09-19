@@ -19,7 +19,7 @@ app.use('/api', (req, res, next) => {
 
 app.set('port', config.port);
 
-app.use(Express.static(pathes.appPublic));
+app.use(Express.static(pathes.public));
 app.use(Celebrate.errors());
 app.use(logError);
 app.use(handleError);

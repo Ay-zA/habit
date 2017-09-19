@@ -7,7 +7,7 @@ import path from 'path';
 
 const compiler = webpack(webpackConfig);
 
-const devMiddleware = webpackMW(compiler, { quiet: true });
+const devMiddleware = webpackMW(compiler, { quiet: false });
 
 const hotMiddleware = webpackHotMW(compiler, {
   log: () => {}

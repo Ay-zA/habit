@@ -9,8 +9,7 @@
   },
   "client": {
     "dir": "client",
-    "main": "index.js",
-    "index": "index.html"
+    "main": "index.js"
   },
   "server": {
     "dbConnectionURL": "mongodb://localhost:27017/habit",

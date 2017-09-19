@@ -16,7 +16,7 @@ export default {
     pathes.clientMain
   ],
   output: {
-    path: pathes.appBuild,
+    path: pathes.build,
     publicPath: '/',
     filename: '[name].[chunkhash].js',
     sourceMapFilename: '[name].[hash].map'
@@ -25,8 +25,8 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
-      template: pathes.clientHtml,
-      favicon: pathes.appFavIcon,
+      template: pathes.index,
+      favicon: pathes.favicon,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -48,7 +48,7 @@ export default {
       noInfo: true, // set to false to see a list of every file being bundled.
       options: {
         sassLoader: {
-          includePaths: [pathes.clientIncludePath]
+          includePaths: [pathes.sassIncludePath]
         },
         context: '/',
         postcss: () => [autoprefixer],
