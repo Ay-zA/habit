@@ -16,10 +16,7 @@ export default class Todo extends Component {
     return (
       <div className="todo">
         <p className="todo-title">{this.props.todo.title}</p>
-        <button
-          className="remove-todo"
-          onClick={::this.onRemove}
-          >-</button>
+        <button className="remove-todo" onClick={:: this.onRemove}>-</button>
       </div>
     );
   }

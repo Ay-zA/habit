@@ -16,7 +16,9 @@ export class Todos extends Component {
     super(props, context);
 
     this.state = {
-      todo: { title: null }
+      todo: {
+        title: null
+      }
     };
   }
 
@@ -28,7 +30,11 @@ export class Todos extends Component {
 
   onAddTodoClick(e) {
     this.props.actions.createTodo(this.state.todo);
-    this.setState({ todo: { title: null } });
+    this.setState({
+      todo: {
+        title: null
+      }
+    });
     this.inputTitle.value = '';
     this.inputTitle.focus();
   }
@@ -39,7 +45,11 @@ export class Todos extends Component {
   }
 
   renderTodos() {
-    return this.props.todos.map(todo => <Todo key={todo._id} todo={todo} onRemove={::this.onRemoveTodo}></Todo>);
+    return this.props.todos.map(this.createTodo);
+  }
+
+  createTodo(todo) {
+    return <Todo key={todo._id} todo={todo} onRemove={:: this.onRemoveTodo}></Todo>;
   }
 
   render() {
@@ -47,16 +57,11 @@ export class Todos extends Component {
     return (
       <div>
         <h1>Todos</h1>
-        {::this.renderTodos()}
-        <input
-          ref={ el => { this.inputTitle = el; }}
-          type="text"
-          onChange={::this.onTitleChange}
-        />
-        <button
-          type="submit"
-          value="save"
-          onClick={::this.onAddTodoClick}>
+        {:: this.renderTodos()}
+        <input ref={el => {
+          this.inputTitle = el;
+        }} type="text" onChange={:: this.onTitleChange}/>
+        <button type="submit" value="save" onClick={:: this.onAddTodoClick}>
           Add Todo
         </button>
       </div>
@@ -65,9 +70,7 @@ export class Todos extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  return {
-    todos: state.todos
-  };
+  return { todos: state.todos };
 }
 
 function mapDispatchToProps(dispatch) {

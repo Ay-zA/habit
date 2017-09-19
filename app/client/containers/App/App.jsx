@@ -12,8 +12,8 @@ export default class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="wraper">
-            <Header />
-            <Main />
+            <Header/>
+            <Main/>
           </div>
         </BrowserRouter>
       </Provider>

@@ -7,10 +7,8 @@ import './style.scss';
 const render = Component => {
   renderDOM(
     <AppContainer>
-      <Component />
-     </AppContainer>,
-    document.getElementById('app')
-  );
+    <Component/>
+  </AppContainer>, document.getElementById('app'));
 };
 
 render(App);
