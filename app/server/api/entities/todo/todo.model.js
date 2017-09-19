@@ -5,7 +5,8 @@ const TodoSchema = new Schema({
     type: String,
     required: [true, 'Todo Title is required!'],
     trim: true
-  }
+  },
+  isCompeleted: Boolean
 }, { timestamps: true });
 
 TodoSchema.methods = {
@@ -13,6 +14,7 @@ TodoSchema.methods = {
     return {
       _id: this.id,
       title: this.title,
+      isCompeleted: this.Completed,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };
