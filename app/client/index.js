@@ -1,21 +1,21 @@
 import React from 'react';
 import { render as renderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from 'containers/App/App';
+import { Root } from './modules/root';
 import '../public/style.scss';
 
 const render = Component => {
   renderDOM(
     <AppContainer>
-    <Component/>
-  </AppContainer>, document.getElementById('app'));
+      <Component/>
+    </AppContainer>, document.getElementById('app'));
 };
 
-render(App);
-
+render(Root);
+console.log(Root);
 if (module.hot) {
-  module.hot.accept('./containers/App/App', () => {
-    const NextApp = require('./containers/App/App');
+  module.hot.accept('./modules/root/root', () => {
+    const NextApp = require('./modules/root/root');
     render(NextApp);
   });
 }

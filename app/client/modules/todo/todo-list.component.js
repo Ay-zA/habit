@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Todo.scss';
 
 export default class Todo extends Component {
   static propTypes = {
@@ -15,6 +14,7 @@ export default class Todo extends Component {
   render() {
     return (
       <div className="todo">
+        <input type="checkbox"/>
         <p className="todo-title">{this.props.todo.title}</p>
         <button className="remove-todo" onClick={:: this.onRemove}>-</button>
       </div>
