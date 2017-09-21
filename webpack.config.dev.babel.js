@@ -13,7 +13,7 @@ export default {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client?reload=false',
     pathes.clientMain
   ],
   output: {

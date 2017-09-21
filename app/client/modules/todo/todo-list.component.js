@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Todo extends Component {
-  static propTypes = {
-    onRemove: PropTypes.func.isRequired,
-    todo: PropTypes.object.isRequired
-  }
+import TodoItem from './todo-item.component';
 
-  onRemove() {
-    this.props.onRemove(this.props.todo);
-  }
+const TodoList = ({ todos }) => (
+  <ul className="todo__list">
+    {todos.map(todo => <TodoItem key={todo._id} title={todo.title} isCompeleted={todo.isCompeleted}/>)}
+  </ul>
+);
 
-  render() {
-    return (
-      <div className="todo">
-        <input type="checkbox"/>
-        <p className="todo-title">{this.props.todo.title}</p>
-        <button className="remove-todo" onClick={:: this.onRemove}>-</button>
-      </div>
-    );
-  }
-}
+TodoList.propTypes = {
+  todos: PropTypes.array
+};
+
+export default TodoList;
