@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 import TodoItem from './todo-item.component';
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, handleRemove, handleToggle }) => (
   <ul className="todo__list">
-    {todos.map(todo => <TodoItem key={todo._id} title={todo.title} isCompeleted={todo.isCompeleted}/>)}
+    {todos.map(todo => <TodoItem key={todo._id} {...todo} handleRemove={handleRemove} handleToggle={handleToggle} />)}
   </ul>
 );
 
 TodoList.propTypes = {
-  todos: PropTypes.array
+  todos: PropTypes.array,
+  handleRemove: PropTypes.func,
+  handleToggle: PropTypes.func
 };
 
 export default TodoList;

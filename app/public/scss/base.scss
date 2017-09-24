@@ -16,6 +16,7 @@ a {
 
 #app {
   height: 100%;
+  background: $app-background;
 }
 
 ul {
@@ -25,6 +26,7 @@ ul {
 
 input ,
 button {
+  border: 0;
   &:focus {
     outline: none;
   }
