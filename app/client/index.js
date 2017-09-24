@@ -7,17 +7,14 @@ import '../public/style.scss';
 const render = Component => {
   renderDOM(
     <AppContainer>
-      <Component/>
-    </AppContainer>, document.getElementById('app'));
+      <Component />
+    </AppContainer>,
+    document.getElementById('app')
+  );
 };
 
 render(Root);
 
 if (module.hot) {
   module.hot.accept();
-
-  // module.hot.accept('./modules/root/root', () => {
-  //   const NextApp = require('./modules/root/root');
-  //   render(NextApp);
-  // });
 }
