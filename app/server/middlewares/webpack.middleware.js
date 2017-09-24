@@ -8,15 +8,21 @@ import path from 'path';
 const compiler = webpack(webpackConfig);
 
 const devMiddleware = webpackMW(compiler, {
-  logLevel: 'error',
-  quiet: true,
   stats: {
-    assets: false,
     colors: true,
-    version: false,
+    assets: false,
     hash: false,
+    version: false,
     timings: false,
     chunks: false,
+    modules: false,
+    reasons: false,
+    children: false,
+    source: false,
+    errors: true,
+    errorDetails: false,
+    warnings: true,
+    publicPath: false,
     chunkModules: false
   }
 });
