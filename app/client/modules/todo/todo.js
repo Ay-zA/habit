@@ -11,11 +11,13 @@ class Todo extends Component {
         _id: 1,
         title: 'Learn JSX',
         isCompeleted: false
-      }, {
+      },
+      {
         _id: 2,
         title: 'Learn React',
         isCompeleted: false
-      }, {
+      },
+      {
         _id: 3,
         title: 'Learn Webpack',
         isCompeleted: true
@@ -36,10 +38,7 @@ class Todo extends Component {
       return;
     }
 
-    let newTodo = [
-      ...todos.slice(0, todoIndex),
-      ...todos.slice(todoIndex + 1)
-    ];
+    let newTodo = [...todos.slice(0, todoIndex), ...todos.slice(todoIndex + 1)];
     return newTodo;
   }
 
@@ -100,10 +99,7 @@ class Todo extends Component {
       isCompeleted: false
     };
     this.setState({
-      todos: [
-        ...this.state.todos,
-        newTodo
-      ]
+      todos: [...this.state.todos, newTodo]
     });
 
     this.clearInput();
@@ -119,8 +115,17 @@ class Todo extends Component {
   render() {
     return (
       <div className="todo__container">
-        <TodoList todos={this.state.todos} handleRemove={:: this.handleRemove} handleToggle={:: this.handleToggle}/>
-        <TodoForm currentTodo={this.state.currentTodo} handleInput={:: this.handleInput} onSubmit={:: this.onSubmit} errorMessage={this.state.errorMessage}/>
+        <TodoList
+          todos={this.state.todos}
+          handleRemove={::this.handleRemove}
+          handleToggle={::this.handleToggle}
+        />
+        <TodoForm
+          currentTodo={this.state.currentTodo}
+          handleInput={::this.handleInput}
+          onSubmit={::this.onSubmit}
+          errorMessage={this.state.errorMessage}
+        />
       </div>
     );
   }

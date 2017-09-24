@@ -6,7 +6,7 @@ const TodoItem = ({ _id, isCompeleted, title, handleRemove, handleToggle }) => {
   const boundHandleToggle = handleToggle.bind(null, _id);
   return (
     <li className="todo__item">
-      <input className="todo__item-toggle" checked={isCompeleted} onChange={boundHandleToggle} type="checkbox"/>
+      <input className="todo__item-toggle" checked={isCompeleted} onChange={boundHandleToggle} type="checkbox" />
       <span className="todo__item-title">{title}</span>
       <button className="todo__item-remove" onClick={boundhandleRemove}>
         ×

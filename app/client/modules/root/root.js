@@ -6,7 +6,7 @@ class Root extends Component {
   render() {
     return (
       <BrowserRouter>
-        <App/>
+        <App />
       </BrowserRouter>
     );
   }
