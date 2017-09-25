@@ -4,7 +4,7 @@ const TYPES = {
   TOGGLE_TODO: 'TODO/TOGGLE_TODO'
 };
 
-export const todoReducer = (state = undefined, action) => {
+const todoReducer = (state = undefined, action) => {
   switch (action.type) {
     case TYPES.ADD_TODO:
       return { ...action.todo, completed: false };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render as renderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { Root } from './modules/root';
+import { Root } from './components/root';
 import '../public/style.scss';
 
 const render = Component => {
