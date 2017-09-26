@@ -1,13 +1,16 @@
 import mongoose, { Schema } from 'mongoose';
 
-const TodoSchema = new Schema({
-  title: {
-    type: String,
-    required: [true, 'Todo Title is required!'],
-    trim: true
+const TodoSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, 'Todo Title is required!'],
+      trim: true
+    },
+    isCompleted: Boolean
   },
-  isCompeleted: Boolean
-}, { timestamps: true });
+  { timestamps: true }
+);
 
 TodoSchema.methods = {
   toJSON() {
