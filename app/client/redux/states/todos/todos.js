@@ -39,3 +39,13 @@ export const actions = {
 };
 
 export default todosReducer;
+
+// TODO: Add updateTodo
+// updateTodos(list, updated) {
+//   const updatedIndex = list.findIndex(item => item._id === updated._id);
+//   return [
+//     ...list.slice(0, updatedIndex),
+//     updated,
+//     ...list.slice(updatedIndex + 1)
+//   ];
+// }

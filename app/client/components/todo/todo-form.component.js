@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = ({ currentTodo, handleInput, onSubmit, errorMessage }) => (
-  <form className="todo__form" onSubmit={onSubmit}>
+const Todo = ({ currentTodo, handleInput, handleAdd, errorMessage }) => (
+  <form className="todo__form" onSubmit={handleAdd}>
     <input
       className="todo__form-input"
       type="text"
@@ -17,7 +17,7 @@ const Todo = ({ currentTodo, handleInput, onSubmit, errorMessage }) => (
 Todo.propTypes = {
   currentTodo: PropTypes.string,
   handleInput: PropTypes.func,
-  onSubmit: PropTypes.func,
+  handleAdd: PropTypes.func,
   errorMessage: PropTypes.string
 };
 

@@ -1,1 +1,1 @@
-export { default as todosReducer, action as todoActions } from './todos';
+export { default as todosReducer, actions as todosActions } from './todos';

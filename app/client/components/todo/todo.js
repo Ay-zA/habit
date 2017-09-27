@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { todosActions } from '$redux/states/todos';
+console.log(todosActions);
 import './todo.scss';
 
 import TodoForm from './todo-form.component';
@@ -6,75 +11,27 @@ import TodoList from './todo-list.component';
 
 class Todo extends Component {
   state = {
-    todos: [
-      {
-        _id: 1,
-        title: 'Learn JSX',
-        isCompeleted: false
-      },
-      {
-        _id: 2,
-        title: 'Learn React',
-        isCompeleted: false
-      },
-      {
-        _id: 3,
-        title: 'Learn Webpack',
-        isCompeleted: true
-      }
-    ],
     currentTodo: '',
     errorMessage: '',
-    nextId: 4
+    nextId: Math.floor(Math.random() * 2000)
   };
+
+  static propTypes = {
+    todos: PropTypes.array,
+    actions: PropTypes.object
+  }
 
   handleInput({ target }) {
     this.setState({ currentTodo: target.value, errorMessage: '' });
   }
 
-  removeTodo(_id, todos) {
-    const todoIndex = todos.findIndex(_ => _._id === _id);
-    if (todoIndex === -1) {
-      return;
-    }
-
-    let newTodo = [...todos.slice(0, todoIndex), ...todos.slice(todoIndex + 1)];
-    return newTodo;
-  }
-
-  toggleTodo(todo) {
-    return {
-      ...todo,
-      isCompeleted: !todo.isCompeleted
-    };
-  }
-
-  updateTodos(list, updated) {
-    const updatedIndex = list.findIndex(item => item._id === updated._id);
-    return [
-      ...list.slice(0, updatedIndex),
-      updated,
-      ...list.slice(updatedIndex + 1)
-    ];
-  }
-
   handleToggle(_id) {
-    const todo = this.state.todos.find(item => item._id === _id);
-    if (!todo) {
-      return;
-    }
-
-    const newTodo = this.toggleTodo(todo);
-    const updatedTodos = this.updateTodos(this.state.todos, newTodo);
-    this.setState({ todos: updatedTodos });
+    this.props.actions.toggleTodo(_id);
   }
 
-  handleRemove(id, e) {
+  handleRemove(_id, e) {
     e.preventDefault();
-    let { todos } = this.state;
-    let newTodos = this.removeTodo(id, todos);
-    console.log(todos === newTodos);
-    this.setState({ todos: newTodos });
+    this.props.actions.removeTodo(_id);
   }
 
   clearInput() {
@@ -86,21 +43,14 @@ class Todo extends Component {
     this.clearInput();
   }
 
-  onSubmit(e) {
+  handleAdd(e) {
     e.preventDefault();
     if (this.state.currentTodo.trim() === '') {
       this.handleEmptyInput();
       return;
     }
 
-    let newTodo = {
-      _id: this.nextId(),
-      title: this.state.currentTodo.trim(),
-      isCompeleted: false
-    };
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    });
+    this.props.actions.addTodo({title: this.state.currentTodo, _id: this.nextId()});
 
     this.clearInput();
   }
@@ -116,14 +66,14 @@ class Todo extends Component {
     return (
       <div className="todo__container">
         <TodoList
-          todos={this.state.todos}
+          todos={this.props.todos}
           handleRemove={::this.handleRemove}
           handleToggle={::this.handleToggle}
         />
         <TodoForm
           currentTodo={this.state.currentTodo}
           handleInput={::this.handleInput}
-          onSubmit={::this.onSubmit}
+          handleAdd={::this.handleAdd}
           errorMessage={this.state.errorMessage}
         />
       </div>
@@ -131,4 +81,10 @@ class Todo extends Component {
   }
 }
 
-export default Todo;
+const mapStateToProps = state => ({
+  todos: state.todos
+});
+
+const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(todosActions, dispatch)});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);
