@@ -17,7 +17,7 @@ TodoSchema.methods = {
     return {
       _id: this.id,
       title: this.title,
-      isCompeleted: this.Completed,
+      isCompleted: this.Completed,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };
