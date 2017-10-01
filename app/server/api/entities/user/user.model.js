@@ -3,26 +3,29 @@ import { hashSync, compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
 import '@/util/time';
 
-const UserSchema = new Schema({
-  email: {
-    type: String,
-    unique: true,
-    trim: true,
-    required: [true, 'Email is required!'],
-    lowercase: true
+const UserSchema = new Schema(
+  {
+    email: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: [true, 'Email is required!'],
+      lowercase: true
+    },
+    name: {
+      type: String,
+      trim: true
+    },
+    password: {
+      type: String,
+      required: [true, 'Password is required!'],
+      minLength: [6, 'Password need to be longer!']
+    }
   },
-  name: {
-    type: String,
-    trim: true
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required!'],
-    minLength: [6, 'Password need to be longer!']
-  }
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   if (this.isModified('password')) {
     this.password = this._hashPassword(this.password);
   }
@@ -38,10 +41,13 @@ UserSchema.methods = {
     return compareSync(password, this.password);
   },
   createToken() {
-    return jwt.sign({
-      _id: this._id,
-      exp: Date.tomorrow(),
-    }, process.env.JWT_SECRET);
+    return jwt.sign(
+      {
+        _id: this._id,
+        exp: Date.tomorrow()
+      },
+      process.env.JWT_SECRET
+    );
   },
   toJSON() {
     return {

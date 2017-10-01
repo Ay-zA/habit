@@ -16,14 +16,15 @@ const todoReducer = (state = undefined, action) => {
 };
 
 const todosReducer = (state = [], action) => {
+  let index;
   switch (action.type) {
     case TYPES.ADD_TODO:
       return [...state, todoReducer(undefined, action)];
     case TYPES.REMOVE_TODO:
-      const removeIndex = state.findIndex(todo => todo._id === action._id);
-      return [...state.slice(0, removeIndex), ...state.slice(removeIndex + 1)];
+      index = state.findIndex(todo => todo._id === action._id);
+      return [...state.slice(0, index), ...state.slice(index + 1)];
     case TYPES.TOGGLE_TODO:
-      return state.map(todo => {
+      return state.map((todo) => {
         if (todo._id !== action._id) return todo;
         return todoReducer(todo, action);
       });

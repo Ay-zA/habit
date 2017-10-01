@@ -48,9 +48,7 @@ const pathes = {
   clientConstants,
   alias: {
     src: client,
-    components: clientComponents,
     containers: clientContainers,
-    $redux: clientRedux,
     constants: clientConstants
   }
 };

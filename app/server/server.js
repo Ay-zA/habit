@@ -27,7 +27,7 @@ app.use(handleError);
 if (config.isDev) {
   app.get(/^(?!\/api).*/g, webpack.html);
 
-  webpack.devMiddleware.waitUntilValid(function() {
+  webpack.devMiddleware.waitUntilValid(() => {
     const url = config.uri;
 
     if (config.openBrowser) {

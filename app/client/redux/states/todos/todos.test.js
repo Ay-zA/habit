@@ -1,5 +1,6 @@
-import todosReducer, { actions } from './todos';
 import deepFreeze from 'deep-freeze';
+import todosReducer, { actions } from './todos';
+
 const initialState = [
   {
     _id: 1,

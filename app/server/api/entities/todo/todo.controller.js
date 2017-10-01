@@ -6,7 +6,7 @@ export async function getTodos(req, res, next) {
     res.json(todos);
   } catch (e) {
     res.status(500);
-    return next(e);
+    next(e);
   }
 }
 
@@ -16,7 +16,7 @@ export async function getTodo(req, res, next) {
     res.json(todo);
   } catch (e) {
     res.status(500);
-    return next(e);
+    next(e);
   }
 }
 
@@ -26,7 +26,7 @@ export async function addTodo(req, res, next) {
     res.json(newTodo);
   } catch (e) {
     res.status(500);
-    return next(e);
+    next(e);
   }
 }
 

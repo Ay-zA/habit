@@ -31,20 +31,21 @@ const hotMiddleware = webpackHotMW(compiler, {
   log: () => {}
 });
 
-compiler.plugin('compilation', function(compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
+compiler.plugin('compilation', (compilation) => {
+  compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
     log.info('Template has been changed reloading page');
     hotMiddleware.publish({ action: 'reload' });
     cb();
   });
 });
 
-const html = function(req, res, next) {
-  let filename = path.join(compiler.outputPath, 'index.html');
+const html = function (req, res, next) {
+  const filename = path.join(compiler.outputPath, 'index.html');
   devMiddleware.waitUntilValid(() => {
-    devMiddleware.fileSystem.readFile(filename, function(err, result) {
+    devMiddleware.fileSystem.readFile(filename, (err, result) => {
       if (err) {
-        return next(err);
+        next(err);
+        return;
       }
       res.set('content-type', 'text/html');
       res.send(result);

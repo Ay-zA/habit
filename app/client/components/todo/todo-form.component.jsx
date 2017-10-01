@@ -16,9 +16,14 @@ const Todo = ({ currentTodo, handleInput, handleAdd, errorMessage }) => (
 
 Todo.propTypes = {
   currentTodo: PropTypes.string,
-  handleInput: PropTypes.func,
-  handleAdd: PropTypes.func,
+  handleInput: PropTypes.func.isRequired,
+  handleAdd: PropTypes.func.isRequired,
   errorMessage: PropTypes.string
+};
+
+Todo.defaultProps = {
+  currentTodo: '',
+  errorMessage: ''
 };
 
 export default Todo;

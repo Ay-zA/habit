@@ -1,4 +1,6 @@
-process.stdout.write('\033c');
-require('babel-polyfill');
+const clear = require('clear-it');
 require('babel-register');
+require('babel-polyfill');
+
+clear();
 require('./server/server.js');

@@ -1,6 +1,6 @@
 import log from 'winston';
-import { chError, chSuccess, chWarning, chProcessing } from './chalk';
 import { app } from '~/configs';
+import { chError, chSuccess, chWarning, chProcessing } from './chalk';
 
 log.cli();
 
