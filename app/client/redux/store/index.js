@@ -1,5 +1,9 @@
-import configureStore from './configureStore';
+import configureStore from './configure';
 
-const store = configureStore();
+const initialState = {
+  todos: [{ _id: '0', title: "I'm initial todo", isCompleted: true }]
+};
+
+const store = configureStore(initialState);
 
 export default store;

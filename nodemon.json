@@ -2,9 +2,10 @@
   "restartable": "rs",
   "verbose": false,
   "execMap": {
-    "js": "node --harmony"
+    "js": "node"
   },
   "watch": [
+    "app/index.js",
     "app/server/",
     "package.json",
     "configs/",

@@ -1,21 +1,21 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { render as renderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from 'containers/App/App';
+import Root from './components/root';
 import '../public/style.scss';
 
-const render = Component => {
+const render = (Component) => {
   renderDOM(
     <AppContainer>
-    <Component/>
-  </AppContainer>, document.getElementById('app'));
+      <Component />
+    </AppContainer>,
+    document.getElementById('app')
+  );
 };
 
-render(App);
+render(Root);
 
 if (module.hot) {
-  module.hot.accept('./containers/App/App', () => {
-    const NextApp = require('./containers/App/App');
-    render(NextApp);
-  });
+  module.hot.accept();
 }

@@ -2,10 +2,11 @@ import { log } from '@/util/logger';
 
 export function handleError(error, req, res, next) {
   if (res.statusCode === 500) {
-    return res.json({
+    res.json({
       message: 'Api error',
       error
     });
+    return;
   }
 
   next();

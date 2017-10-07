@@ -7,18 +7,13 @@ import { app as config, pathes } from '~/configs';
 import morgan from './morgan';
 import webpack from './webpack.middleware';
 
-export default app => {
+export default (app) => {
   if (app.isProd) {
     app.use(helmet());
     app.use(compression());
   }
 
   if (config.isDev) {
-    // app.use(
-    //   morgan(
-    //     ':remote-addr - :remote-user | :method :url :status | :response-time ms'
-    //   )
-    // );
     app.use(morgan);
     app.use(webpack.devMiddleware);
     app.use(webpack.hotMiddleware);

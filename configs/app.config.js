@@ -19,7 +19,7 @@ const verbose = arg.verbose;
 const dbConnectionURL = process.env.MONGO_URL || appConfig.server.dbConnectionURL;
 const port = isValidPort(arg.port) ? arg.port : process.env.PORT || 3000;
 const host = arg.host || process.env.HOST || '127.0.0.1';
-const env = process.env.NODE_ENV || 'dev';
+const env = process.env.NODE_ENV || ENVS.DEV;
 
 const app = {
   ENVS,

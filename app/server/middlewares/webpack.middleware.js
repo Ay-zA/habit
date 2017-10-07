@@ -7,34 +7,50 @@ import path from 'path';
 
 const compiler = webpack(webpackConfig);
 
-const devMiddleware = webpackMW(compiler, { quiet: false });
+const devMiddleware = webpackMW(compiler, {
+  stats: {
+    colors: true,
+    assets: false,
+    hash: false,
+    version: false,
+    timings: false,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    children: false,
+    source: false,
+    errors: true,
+    errorDetails: false,
+    warnings: true,
+    publicPath: false,
+    chunkModules: false
+  }
+});
 
 const hotMiddleware = webpackHotMW(compiler, {
   log: () => {}
 });
 
-compiler.plugin('compilation', function(compilation) {
-  compilation
-    .plugin('html-webpack-plugin-after-emit', function(data, cb) {
-      log.info('Template has been changed reloading page');
-      hotMiddleware.publish({ action: 'reload' });
-      cb();
-    });
+compiler.plugin('compilation', (compilation) => {
+  compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+    log.info('Template has been changed reloading page');
+    hotMiddleware.publish({ action: 'reload' });
+    cb();
+  });
 });
 
-const html = function(req, res, next) {
-  let filename = path.join(compiler.outputPath, 'index.html');
+const html = function (req, res, next) {
+  const filename = path.join(compiler.outputPath, 'index.html');
   devMiddleware.waitUntilValid(() => {
-    devMiddleware
-      .fileSystem
-      .readFile(filename, function(err, result) {
-        if (err) {
-          return next(err);
-        }
-        res.set('content-type', 'text/html');
-        res.send(result);
-        res.end();
-      });
+    devMiddleware.fileSystem.readFile(filename, (err, result) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.set('content-type', 'text/html');
+      res.send(result);
+      res.end();
+    });
   });
 };
 

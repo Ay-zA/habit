@@ -1,23 +1,20 @@
 {
-  "presets": [
-    "env",
-    "react",
-    "flow",
-    "stage-0"
-  ],
+  "presets": ["env", "react", "flow", "stage-0"],
   "retainLines": true,
   "plugins": [
     "react-hot-loader/babel",
-    "add-module-exports", [
-      "babel-plugin-root-import", [{
-          "rootPathPrefix": "@",
-          "rootPathSuffix": "app/server"
-        },
-        {
-          "rootPathPrefix": "~",
-          "rootPathSuffix": "./"
+    "add-module-exports",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@": "./app/server",
+          "~": "./",
+          "$redux": "./app/client/redux",
+          "-": "./app/client"
         }
-      ]
+      }
     ]
   ]
 }

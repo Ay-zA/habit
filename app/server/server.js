@@ -14,7 +14,7 @@ const app = new Express();
 
 configMiddlewares(app);
 app.use('/api', (req, res, next) => {
-  require('@/api')(req, res, next);
+  require('@/api/index.js')(req, res, next);
 });
 
 app.set('port', config.port);
@@ -27,8 +27,7 @@ app.use(handleError);
 if (config.isDev) {
   app.get(/^(?!\/api).*/g, webpack.html);
 
-  webpack.devMiddleware.waitUntilValid(function() {
-    logServerConfig();
+  webpack.devMiddleware.waitUntilValid(() => {
     const url = config.uri;
 
     if (config.openBrowser) {
@@ -40,4 +39,4 @@ if (config.isDev) {
 const server = http.createServer(app);
 
 server.on('error', handleServerError);
-server.listen(config.port);
+server.listen(config.port, logServerConfig);
