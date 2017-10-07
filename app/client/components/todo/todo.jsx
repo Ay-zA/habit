@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { todosActions } from '$redux/states/todos';
+import { todosActions } from '$redux/modules/todos';
 import './todo.scss';
 
 import TodoForm from './todo-form.component';
@@ -13,7 +13,8 @@ class Todo extends Component {
     actions: PropTypes.shape({
       addTodo: PropTypes.func.isRequired,
       removeTodo: PropTypes.func.isRequired,
-      toggleTodo: PropTypes.func.isRequired
+      toggleTodo: PropTypes.func.isRequired,
+      getTodos: PropTypes.func.isRequired
     }).isRequired,
     todos: PropTypes.arrayOf(
       PropTypes.shape({
@@ -26,9 +27,12 @@ class Todo extends Component {
 
   state = {
     currentTodo: '',
-    errorMessage: '',
-    nextId: Math.floor(Math.random() * 2000).toString()
+    errorMessage: ''
   };
+
+  componentDidMount() {
+    this.props.actions.getTodos();
+  }
 
   handleInput = ({ target }) => {
     this.setState({ currentTodo: target.value, errorMessage: '' });
@@ -59,12 +63,10 @@ class Todo extends Component {
       return;
     }
 
-    this.props.actions.addTodo({ title: this.state.currentTodo, _id: this.nextId() });
+    this.props.actions.addTodo({ title: this.state.currentTodo });
 
     this.clearInput();
   };
-
-  nextId = () => Math.floor(Math.random() * 2000).toString();
 
   render() {
     return (

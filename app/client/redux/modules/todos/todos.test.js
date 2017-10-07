@@ -1,5 +1,6 @@
 import deepFreeze from 'deep-freeze';
-import todosReducer, { actions } from './todos';
+import todosReducer from './todos.reducer';
+import todosActions from './todos.actions';
 
 const initialState = [
   {
@@ -20,11 +21,11 @@ const initialState = [
 ];
 
 deepFreeze(initialState);
-deepFreeze(actions);
+deepFreeze(todosActions);
 
 describe('Todos:', () => {
   it('Add todo', () => {
-    const action = actions.addTodo({ title: 'Todo 5', _id: 5 });
+    const action = todosActions.addTodo({ title: 'Todo 5', _id: 5 });
     const expectedState = [
       {
         _id: 1,
@@ -51,7 +52,7 @@ describe('Todos:', () => {
     expect(todosReducer(initialState, action)).toEqual(expectedState);
   });
   it('Remove todo', () => {
-    const action = actions.removeTodo(2);
+    const action = todosActions.removeTodo(2);
     const expectedState = [
       {
         _id: 1,
@@ -68,7 +69,7 @@ describe('Todos:', () => {
     expect(todosReducer(initialState, action)).toEqual(expectedState);
   });
   it('Toggle todo', () => {
-    const action = actions.toggleTodo(1);
+    const action = todosActions.toggleTodo(1);
     const expectedState = [
       {
         _id: 1,
