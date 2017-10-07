@@ -7,17 +7,27 @@ const TodoSchema = new Schema(
       required: [true, 'Todo Title is required!'],
       trim: true
     },
-    isCompleted: Boolean
+    isCompleted: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );
+
+TodoSchema.statics.findByIdAndToggle = async function (id, cb) {
+  const todo = await this.findById(id);
+  todo.isCompleted = !todo.isCompleted;
+  const toggledTodo = todo.save();
+  return toggledTodo;
+};
 
 TodoSchema.methods = {
   toJSON() {
     return {
       _id: this.id,
       title: this.title,
-      isCompleted: this.Completed,
+      isCompleted: this.isCompleted,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };

@@ -38,3 +38,15 @@ export async function deleteTodo(req, res, next) {
     res.status(500);
   }
 }
+
+// TODO: Here
+
+export async function toggleTodo(req, res, next) {
+  try {
+    const toggledTodo = await Todo.findByIdAndToggle(req.params.id);
+
+    res.json({ todo: toggledTodo });
+  } catch (e) {
+    res.status(500);
+  }
+}

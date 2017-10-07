@@ -14,7 +14,7 @@ const app = new Express();
 
 configMiddlewares(app);
 app.use('/api', (req, res, next) => {
-  require('@/api')(req, res, next);
+  require('@/api/index.js')(req, res, next);
 });
 
 app.set('port', config.port);
