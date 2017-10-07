@@ -9,9 +9,10 @@
       {
         "root": ["./"],
         "alias": {
-          "@": "app/server",
+          "@": "./app/server",
           "~": "./",
-          "$redux": "app/client/redux"
+          "$redux": "./app/client/redux",
+          "-": "./app/client"
         }
       }
     ]
