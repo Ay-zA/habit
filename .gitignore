@@ -1,5 +1,6 @@
 node_modules/
 build/
+.imdone/
 
 .vscode
 
@@ -12,3 +13,4 @@ Thumbs.db
 npm-debug.log
 
 .flowconfig
+.tern-project
