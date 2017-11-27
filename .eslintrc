@@ -1,4 +1,5 @@
-{  "parser": "babel-eslint",
+{
+  "parser": "babel-eslint",
 
   "env": {
     "browser": true,
@@ -18,16 +19,19 @@
   "rules": {
     "arrow-parens": [1, "as-needed", { "requireForBlockBody": true }],
     "comma-dangle": [1, "never"],
+    "consistent-return": 0,
     "func-names": 0,
     "global-require": 0,
     "linebreak-style": 0,
     "no-mixed-operators": 0,
     "no-underscore-dangle": 0,
-    "no-unused-vars": [1, { "args": "none" }],
-
-    "jsx-a11y/href-no-hash": 0,
+    "no-unused-vars": [1, {"args": "none"}],
+    "object-curly-newline": [1, { "consistent": true }],
 
     "import/extensions": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+
+    "jsx-a11y/href-no-hash": 0
   }
 }
