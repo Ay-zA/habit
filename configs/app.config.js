@@ -5,7 +5,7 @@ import appConfig from '~/app.config';
 dotenv.config();
 const arg = yargs.argv;
 
-// eslint-disable-next-line no-shadow
+// eslint-disable-next-line
 const isValidPort = port => !isNaN(parseInt(port, 10));
 
 const ENVS = {
@@ -13,8 +13,7 @@ const ENVS = {
   DEV: 'development'
 };
 
-const openBrowser = arg.open;
-const verbose = arg.verbose;
+const { open: browser, verbose } = arg;
 
 const dbConnectionURL = process.env.MONGO_URL || appConfig.server.dbConnectionURL;
 const port = isValidPort(arg.port) ? arg.port : process.env.PORT || 3000;
@@ -23,7 +22,7 @@ const env = process.env.NODE_ENV || ENVS.DEV;
 
 const app = {
   ENVS,
-  openBrowser,
+  browser,
   dbConnectionURL,
   wds: {
     host: appConfig.wds.host,

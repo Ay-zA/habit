@@ -1,9 +1,8 @@
-const app = require('~/app.config');
-
 import path from 'path';
 import fs from 'fs';
 
-// eslint-disable-next-line no-sync
+const app = require('~/app.config');
+
 const rootDirectory = fs.realpathSync(process.cwd());
 const resolveRoot = relativePath => path.resolve(rootDirectory, relativePath);
 
@@ -21,12 +20,6 @@ const resolvePublic = relativePath => path.resolve(publicDirectory, relativePath
 
 const buildDirectory = resolveRoot(app.outDir);
 
-const client = resolveApp(app.client.dir);
-const clientRedux = resolveClient('redux');
-const clientComponents = resolveClient('components');
-const clientContainers = resolveClient('containers');
-const clientConstants = resolveClient('constants');
-
 const pathes = {
   appNodeModules: resolveRoot('node_modules'),
   resolveBuild: relativePath => path.resolve(buildDirectory, relativePath),
@@ -40,17 +33,8 @@ const pathes = {
   sassIncludePath: resolvePublic('scss'),
   server: serverDirectory,
   serverMain: resolveServer(app.server.main),
-  client,
-  clientMain: resolveClient(app.client.main),
-  clientRedux,
-  clientComponents,
-  clientContainers,
-  clientConstants,
-  alias: {
-    src: client,
-    containers: clientContainers,
-    constants: clientConstants
-  }
+  client: clientDirectory,
+  clientMain: resolveClient(app.client.main)
 };
 
 export default pathes;
