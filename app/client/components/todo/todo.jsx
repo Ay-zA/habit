@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { todosActions } from '$redux/modules/todos';
+import { todosActions } from '-/redux/modules/todos';
 import './todo.scss';
 
 import TodoForm from './todo-form.component';
@@ -16,13 +16,12 @@ class Todo extends Component {
       toggleTodo: PropTypes.func.isRequired,
       getTodos: PropTypes.func.isRequired
     }).isRequired,
-    todos: PropTypes.arrayOf(
-      PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        isCompleted: PropTypes.boolean
-      })
-    ).isRequired
+    todos: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      isCompleted: PropTypes.boolean
+    })).isRequired,
+    isFetching: PropTypes.bool.isRequired
   };
 
   state = {
@@ -35,7 +34,10 @@ class Todo extends Component {
   }
 
   handleInput = ({ target }) => {
-    this.setState({ currentTodo: target.value, errorMessage: '' });
+    this.setState({
+      currentTodo: target.value,
+      errorMessage: ''
+    });
   };
 
   handleToggle = (_id) => {
@@ -48,11 +50,15 @@ class Todo extends Component {
   };
 
   clearInput = () => {
-    this.setState({ currentTodo: '' });
+    this.setState({
+      currentTodo: ''
+    });
   };
 
   handleEmptyInput = () => {
-    this.setState({ errorMessage: 'Please enter some text' });
+    this.setState({
+      errorMessage: 'Please enter some text'
+    });
     this.clearInput();
   };
 
@@ -63,7 +69,9 @@ class Todo extends Component {
       return;
     }
 
-    this.props.actions.addTodo({ title: this.state.currentTodo });
+    this.props.actions.addTodo({
+      title: this.state.currentTodo
+    });
 
     this.clearInput();
   };
@@ -72,10 +80,12 @@ class Todo extends Component {
     return (
       <div className="todo__container">
         <TodoList
+          isFetching={this.props.isFetching}
           todos={this.props.todos}
           handleRemove={this.handleRemove}
           handleToggle={this.handleToggle}
         />
+        {/* )} */}
         <TodoForm
           currentTodo={this.state.currentTodo}
           handleInput={this.handleInput}
@@ -88,9 +98,12 @@ class Todo extends Component {
 }
 
 const mapStateToProps = state => ({
-  todos: state.todos
+  todos: state.todoState.todos,
+  isFetching: state.todoState.isFetching
 });
 
-const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(todosActions, dispatch) });
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(todosActions, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);

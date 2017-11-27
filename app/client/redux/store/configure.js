@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import reduxImmutableMiddleware from 'redux-immutable-state-invariant';
 import { rootReducer, rootSaga } from '../modules';
 
 const configureStore = (initialState = {}) => {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware];
+  const middlewares = [reduxImmutableMiddleware(), sagaMiddleware];
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     rootReducer,

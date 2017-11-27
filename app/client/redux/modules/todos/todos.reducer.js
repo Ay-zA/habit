@@ -1,47 +1,86 @@
 import { actionTypes } from './todos.actions';
 
+const initialState = {
+  todos: [],
+  isFetching: false
+};
+
 const todoReducer = (state = undefined, action) => {
   switch (action.type) {
     case actionTypes.ADD_TODO_SUCCESS:
-      return { ...action.todo, isCompleted: false };
+      return {
+        ...action.todo,
+        isCompleted: false
+      };
+
     case actionTypes.TOGGLE_TODO_SUCCESS:
-      return { ...state, isCompleted: !state.isCompleted };
+      return {
+        ...state,
+        isCompleted: !state.isCompleted
+      };
+
     default:
       return state;
   }
 };
 
-const todosReducer = (state = [], action) => {
+const todosReducer = (state = initialState, action) => {
   let index;
+
   switch (action.type) {
+    case actionTypes.REQUEST_ADD_TODO:
+    case actionTypes.REQUEST_REMOVE_TODO:
+    case actionTypes.REQUEST_TOGGLE_TODO:
+    case actionTypes.REQUEST_GET_TODOS:
+      return {
+        ...state,
+        isFetching: true
+      };
+
     case actionTypes.GET_TODOS_SUCCESS:
-      return action.todos;
+      return {
+        ...state,
+        todos: action.todos,
+        isFetching: false
+      };
+
     case actionTypes.ADD_TODO_SUCCESS:
-      return action.todo !== undefined ? [...state, todoReducer(undefined, action)] : state;
-    case actionTypes.ADD_TODO_FAILED:
-      return state;
+      return action.todo !== undefined
+        ? {
+          ...state,
+          todos: [...state.todos, todoReducer(undefined, action)],
+          isFetching: false
+        }
+        : state;
+
+    case actionTypes.REQUEST_FAILED:
+      return {
+        ...state,
+        isFetching: false
+      };
+
     case actionTypes.REMOVE_TODO_SUCCESS:
-      index = state.findIndex(todo => todo._id === action._id);
+      index = state.todos.findIndex(todo => todo._id === action._id);
       if (index < 0) return state;
-      return [...state.slice(0, index), ...state.slice(index + 1)];
+      return {
+        ...state,
+        todos: [...state.todos.slice(0, index), ...state.todos.slice(index + 1)],
+        isFetching: false
+      };
+
     case actionTypes.TOGGLE_TODO_SUCCESS:
-      return state.map((todo) => {
-        if (todo._id !== action._id) return todo;
-        return todoReducer(todo, action);
-      });
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo._id !== action._id) return todo;
+          return todoReducer(todo, action);
+        }),
+        isFetching: false
+      };
+
     default:
       return state;
   }
 };
 
 export default todosReducer;
-
-// TODO:20 0 0 0 0 Add updateTodo
-// updateTodos(list, updated) {
-//   const updatedIndex = list.findIndex(item => item._id === updated._id);
-//   return [
-//     ...list.slice(0, updatedIndex),
-//     updated,
-//     ...list.slice(updatedIndex + 1)
-//   ];
-// }

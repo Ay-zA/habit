@@ -1,12 +1,10 @@
 import { takeEvery, call, put, takeLatest } from 'redux-saga/effects';
-import TodosService from '-/services/todos.service';
+import { TodoService } from '-/services';
 import { actionTypes } from './todos.actions';
-
-const todosService = new TodosService();
 
 function* createTodoAsync(action) {
   try {
-    const response = yield call(todosService.addTodo, action.todo);
+    const response = yield call(TodoService.addTodo, action.todo);
     yield put({ type: actionTypes.ADD_TODO_SUCCESS, todo: response });
   } catch (error) {
     yield put({ type: actionTypes.REQUEST_FAILED, error });
@@ -19,7 +17,7 @@ export function* watchCreateTodo() {
 
 function* getTodosAsync() {
   try {
-    const response = yield call(todosService.getTodos);
+    const response = yield call(TodoService.getTodos);
     yield put({ type: actionTypes.GET_TODOS_SUCCESS, todos: response });
   } catch (error) {
     yield put({ type: actionTypes.REQUEST_FAILED, error });
@@ -32,7 +30,7 @@ export function* watchGetTodos() {
 
 export function* removeTodoAsync(action) {
   try {
-    yield call(todosService.removeTodo, action._id);
+    yield call(TodoService.removeTodo, action._id);
     yield put({ type: actionTypes.REMOVE_TODO_SUCCESS, _id: action._id });
   } catch (error) {
     yield put({ type: actionTypes.REQUEST_FAILED, error });
@@ -45,7 +43,7 @@ export function* watchRemoveTodo() {
 
 export function* toggleTodoAsync(action) {
   try {
-    yield call(todosService.toggleTodo, action._id);
+    yield call(TodoService.toggleTodo, action._id);
     yield put({ type: actionTypes.TOGGLE_TODO_SUCCESS, _id: action._id });
   } catch (error) {
     yield put({ type: actionTypes.REQUEST_FAILED, error });

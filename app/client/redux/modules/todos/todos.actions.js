@@ -12,7 +12,7 @@ export const actionTypes = {
 
 export default {
   addTodo: todo => ({ type: actionTypes.REQUEST_ADD_TODO, todo }),
-  toggleTodo: (_id: number) => ({ type: actionTypes.REQUEST_TOGGLE_TODO, _id }),
-  removeTodo: (_id: number) => ({ type: actionTypes.REQUEST_REMOVE_TODO, _id }),
+  toggleTodo: (_id) => ({ type: actionTypes.REQUEST_TOGGLE_TODO, _id }),
+  removeTodo: (_id) => ({ type: actionTypes.REQUEST_REMOVE_TODO, _id }),
   getTodos: () => ({ type: actionTypes.REQUEST_GET_TODOS })
 };

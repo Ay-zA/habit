@@ -44,6 +44,7 @@
 }
 
 .todo__list {
+  position: relative;
   grid-column: 2;
   list-style: none;
   margin: 10px 0;

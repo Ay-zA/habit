@@ -1,47 +1,43 @@
 import HttpService from './http.service';
 
-// TODO: Test It
-export default class ApiService extends HttpService {
-  debugMode = true;
-  apiUri = url => `/api/${url}`;
+export default class ApiService {
+  static debugMode = true;
 
-  apiGet = url =>
-    this.get(this.apiUri(url))
-      .then(this.httpStatusHelper)
+  static apiUri = url => `/api/${url}`;
+
+  static get = url =>
+    HttpService.get(ApiService.apiUri(url))
       .then(response => response.json())
-      .catch(this.handleError)
-      .then(this.handleResponse);
+      .catch(ApiService.handleError)
+      .then(ApiService.handleResponse);
 
-  apiRemove = url =>
-    this.remove(this.apiUri(url))
-      .then(this.httpStatusHelper)
+  static remove = url =>
+    HttpService.remove(ApiService.apiUri(url))
       .then(response => response.json())
-      .catch(this.handleError)
-      .then(this.handleResponse);
+      .catch(ApiService.handleError)
+      .then(ApiService.handleResponse);
 
-  apiPost = (url, body) =>
-    this.post(this.apiUri(url), body)
-      .then(this.httpStatusHelper)
+  static post = (url, body) =>
+    HttpService.post(ApiService.apiUri(url), body)
       .then(response => response.json())
-      .catch(this.handleError)
-      .then(this.handleResponse);
+      .catch(ApiService.handleError)
+      .then(ApiService.handleResponse);
 
-  apiPatch = (url, body) =>
-    this.patch(this.apiUri(url), body)
-      .then(this.httpStatusHelper)
+  static patch = (url, body) =>
+    HttpService.patch(ApiService.apiUri(url), body)
       .then(response => response.json())
-      .catch(this.handleError)
-      .then(this.handleResponse);
+      .catch(ApiService.handleError)
+      .then(ApiService.handleResponse);
 
-  handleError = (error, url) => {
-    if (this.debugMode) {
+  static handleError = (error, url) => {
+    if (ApiService.debugMode) {
       console.error('API error in URL', url, 'Error: ', error); // eslint-disable-line no-console
     }
     throw new Error(error);
   };
 
-  handleResponse = (data) => {
-    if (this.debugMode) {
+  static handleResponse = (data) => {
+    if (ApiService.debugMode) {
       console.log('Data: ', data); // eslint-disable-line no-console
     }
     return data;

@@ -1,37 +1,37 @@
 export default class HttpService {
-  headers = {
+  static headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   };
 
-  get = url =>
+  static get = url =>
     fetch(url, {
       method: 'GET',
-      headers: this.headers
-    });
+      headers: HttpService.headers
+    }).then(HttpService.httpStatusHelper);
 
-  remove = (url, body) =>
+  static remove = (url, body) =>
     fetch(url, {
       method: 'DELETE',
-      headers: this.headers,
+      headers: HttpService.headers,
       body: JSON.stringify(body)
-    });
+    }).then(HttpService.httpStatusHelper);
 
-  post = (url, body) =>
+  static post = (url, body) =>
     fetch(url, {
       method: 'POST',
-      headers: this.headers,
+      headers: HttpService.headers,
       body: JSON.stringify(body)
-    });
+    }).then(HttpService.httpStatusHelper);
 
-  patch = (url, body) =>
+  static patch = (url, body) =>
     fetch(url, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: HttpService.headers,
       body: JSON.stringify(body)
-    });
+    }).then(HttpService.httpStatusHelper);
 
-  httpStatusHelper = (response) => {
+  static httpStatusHelper = (response) => {
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);
     }

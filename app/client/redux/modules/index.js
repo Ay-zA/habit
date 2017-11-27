@@ -3,7 +3,7 @@ import { all, fork } from 'redux-saga/effects';
 import { todosReducer, todosSagas } from './todos';
 
 export const rootReducer = combineReducers({
-  todos: todosReducer
+  todoState: todosReducer
 });
 
 // FIXME: HMR notworking with sagas see: https://github.com/redux-saga/redux-saga/issues/22
