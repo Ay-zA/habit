@@ -11,7 +11,7 @@ const GLOBALS = {
 export default {
   devtool: 'source-map',
   target: 'web',
-  entry: ['babel-polyfill', pathes.clientMain],
+  entry: ['@babel/polyfill', pathes.clientMain],
   output: {
     path: pathes.build,
     publicPath: '/',
@@ -59,9 +59,7 @@ export default {
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
         test: /(\.css|\.scss|\.sass)$/,
-        loader: ExtractTextPlugin.extract(
-          'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'
-        )
+        loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
       },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?name=[name].[ext]' },
       {
@@ -82,7 +80,6 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    modules: [pathes.app, pathes.appNodeModules],
-    alias: pathes.alias
+    modules: [pathes.app, pathes.appNodeModules]
   }
 };

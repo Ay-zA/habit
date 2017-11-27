@@ -1,7 +1,7 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import { pathes } from './configs';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development')
@@ -11,7 +11,7 @@ export default {
   devtool: '#eval-source-map',
   target: 'web',
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=false',
     pathes.clientMain
@@ -37,9 +37,9 @@ export default {
       name: 'vendor',
       filename: 'vendor-[hash].js',
       minChunks(mod) {
-        const context = mod.context;
+        const { context } = mod;
         return context && context.indexOf('node_modules') >= 0;
-      },
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -81,7 +81,6 @@ export default {
     modules: [
       pathes.app,
       pathes.appNodeModules
-    ],
-    alias: pathes.alias
+    ]
   }
 };
