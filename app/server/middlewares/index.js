@@ -4,19 +4,21 @@ import compression from 'compression';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import { app as config, pathes } from '~/configs';
-import morgan from './morgan';
+import morgan from '@/utils/morgan';
+import prettyError from '@/utils/pretty-error';
 import webpack from './webpack.middleware';
 
-export default (app) => {
-  if (app.isProd) {
-    app.use(helmet());
-    app.use(compression());
-  }
-
+const configMiddlewares = (app) => {
   if (config.isDev) {
+    prettyError.start();
     app.use(morgan);
     app.use(webpack.devMiddleware);
     app.use(webpack.hotMiddleware);
+  }
+
+  if (app.isProd) {
+    app.use(helmet());
+    app.use(compression());
   }
 
   app.use(favicon(pathes.favicon));
@@ -26,3 +28,4 @@ export default (app) => {
 };
 
 export { default as webpack } from './webpack.middleware';
+export default configMiddlewares;

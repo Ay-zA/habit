@@ -52,12 +52,9 @@
     "chalk": "^2.3.0",
     "clear-it": "^1.0.0",
     "compression": "^1.7.1",
-    "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "deep-freeze": "^0.0.1",
     "dotenv": "^4.0.0",
-    "eslint": "^4.12.0",
-    "eslint-config-airbnb": "^16.1.0",
     "expect": "^21.2.1",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -86,7 +83,6 @@
     "redux": "^3.7.2",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-saga": "^0.16.0",
-    "rimraf": "^2.6.2",
     "sanitize-html": "^1.16.1",
     "sass-loader": "^6.0.6",
     "serve-favicon": "^2.4.5",
@@ -100,10 +96,15 @@
     "yargs": "^10.0.3"
   },
   "devDependencies": {
+    "cross-env": "^5.1.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-babel-module-alias": "^1.5.1",
     "eslint-import-resolver-babel-module": "^4.0.0-beta.3",
     "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.5.1",
+    "eslint": "^4.12.0",
+    "rimraf": "^2.6.2"
   }
 }

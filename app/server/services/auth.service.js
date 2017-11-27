@@ -4,13 +4,11 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 
 import User from '@/api/entities/user/user.model';
 
-const localOpts = {
-  usernameField: 'email'
-};
+const localOpts = { usernameField: 'email' };
 
 const localStrategy = new LocalStrategy(localOpts, async (email, password, done) => {
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return done(null, false);
