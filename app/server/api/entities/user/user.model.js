@@ -1,7 +1,9 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
-import '@/util/time';
+import '@/utils/time';
+
+const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {

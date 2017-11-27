@@ -29,6 +29,7 @@ class APIError extends ExtendableError {
    */
   constructor(message, status = httpStatus.INTERNAL_SERVER_ERROR) {
     super(message, status);
+    Error.captureStackTrace(this, this.constructor.name);
   }
 }
 

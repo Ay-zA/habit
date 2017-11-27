@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import celebrate from 'celebrate';
+import { celebrate } from 'celebrate';
 import todoValidation from './todo.validator';
 import * as TodoController from './todo.controller';
 

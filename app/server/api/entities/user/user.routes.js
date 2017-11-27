@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import celebrate from 'celebrate';
+import { celebrate } from 'celebrate';
 import { localAuth } from '@/services/auth.service';
 import userValidation from './user.validator';
 import * as UserController from './user.controller';
