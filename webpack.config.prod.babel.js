@@ -11,7 +11,7 @@ const GLOBALS = {
 export default {
   devtool: 'source-map',
   target: 'web',
-  entry: ['@babel/polyfill', pathes.clientMain],
+  entry: ['babel-polyfill', pathes.clientMain],
   output: {
     path: pathes.build,
     publicPath: '/',

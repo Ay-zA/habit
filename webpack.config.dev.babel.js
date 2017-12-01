@@ -11,7 +11,7 @@ export default {
   devtool: '#eval-source-map',
   target: 'web',
   entry: [
-    '@babel/polyfill',
+    'babel-polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=false',
     pathes.clientMain
