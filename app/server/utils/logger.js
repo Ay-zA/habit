@@ -1,5 +1,5 @@
 import winston from 'winston';
-import { chError, chSuccess, chWarning } from './chalk';
+import { chError, chSuccess, chWarning, chProcessing } from './chalk';
 
 winston.cli();
 
@@ -23,6 +23,10 @@ class logger {
   static error = (title, message) => {
     winston.error(chError(title), message);
   };
+
+  static update = (path) => {
+    winston.info(chProcessing('Updating: '), path);
+  }
 }
 
 export default logger;

@@ -7,9 +7,9 @@ const watcher = chokidar.watch(['./api'], { cwd: pathes.server });
 
 const watchApi = () => {
   Object.keys(require.cache).forEach((id) => {
-    if (/[/\\](api)[/\\]/.test(id)) {
+    if (/[\\/](server)[\\/](api)[\\/]/.test(id)) {
       delete require.cache[id];
-      logger.info('Updating', id.split('\\').slice(-1));
+      logger.update(id.split('\\').slice(-2).join('/'));
     }
   });
 };

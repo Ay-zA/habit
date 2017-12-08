@@ -5,7 +5,7 @@ import logger from '@/utils/logger';
 
 export function logServerConfig(err) {
   if (err) logger.error(err);
-  const url = `http://${app.HOST}:${app.PORT}`;
+  const url = `http://${app.host}:${app.port}`;
 
   logger.success('Server listening at: ', url);
   logger.warn('Environment:', app.ENV);
