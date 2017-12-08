@@ -14,9 +14,9 @@ export const getProject = async (req, res, next) => {
   try {
     const todo = await Project.findById(req.params.id);
     if (todo == null) {
-      res.status(404).send({message: "not found"});
+      res.status(404).send({ message: 'not found' });
     } else {
-      res.json(todo);
+      res.json(todo.toJSON());
     }
   } catch (e) {
     res.status(500);
