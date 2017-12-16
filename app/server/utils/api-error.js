@@ -1,6 +1,12 @@
 import httpStatus from 'http-status';
 import parseStack from 'parse-stack';
 import { sep } from 'path';
+
+const jsonStack = (err) => parseStack(err).filter(stack => !stack.filepath.includes('node_modules')).map(stack => ({
+  name: stack.name,
+  filepath: `${stack.filepath.split(sep).join('/')} | ${stack.lineNumber}`
+}));
+
 /**
  * @extends Error
  */
@@ -14,11 +20,9 @@ class ExtendableError extends Error {
     this.isOperational = true; // This i  s required since bluebird 4 doesn't append it anymore.
     Error.captureStackTrace(this, this.constructor.name);
 
-    this.parsedStack = parseStack(orginalError).filter(_ => !_.filepath.includes('node_modules')).map(_ => ({
-      name: _.name,
-      filepath: `${_.filepath.split(sep).join('/')} | ${_.lineNumber}`
-    }));
+    this.parsedStack = jsonStack(orginalError || this);
   }
+
 }
 
 /**

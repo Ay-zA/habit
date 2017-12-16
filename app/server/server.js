@@ -3,7 +3,7 @@ import express from 'express';
 import { errors as celebrateErrors } from 'celebrate';
 import configMiddlewares, { webpack } from '@/middlewares';
 import { logServerConfig } from '@/services/log.service';
-import { handleServerError, handleErrors } from '@/services/error-handler';
+import { handleServerError, handleClientErrors, prettyErrors } from '@/services/error-handler';
 import { app as config, pathes } from '~/configs';
 
 import '@/db/mongoose';
@@ -18,7 +18,8 @@ app.use(express.static(pathes.public));
 app.use('/api', (req, res, next) => require('@/api')(req, res, next));
 
 app.use(celebrateErrors());
-app.use(handleErrors);
+app.use(handleClientErrors);
+app.use(prettyErrors);
 
 if (config.isDev) {
   app.get(/^(?!\/api).*/g, webpack.html);

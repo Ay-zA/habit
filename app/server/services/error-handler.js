@@ -31,16 +31,23 @@ export function handleConnectionClose() {
   });
 }
 
-export function handleErrors(err, req, res, next) {
+export function handleClientErrors(err, req, res, next) {
   const error = new APIError(err.message, err.status, err.isPublic, err);
 
   const resError = {
     message: error.isPublic || app.isDev ? error.message : httpStatus[error.status],
-    stack: app.isDev ? error.parsedStack : {}
   };
+
+  if (app.isDev && error.status >= 500) {
+    resError.stack = error.parsedStack;
+  }
 
   res.status(error.status).json(resError);
 
+  return next(error.status >= 500 ? err : null);
+}
+
+export function prettyErrors(err, req, res, next) {
   logger.error(prettyError.render(err));
   return next();
 }
