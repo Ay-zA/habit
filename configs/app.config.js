@@ -31,11 +31,16 @@ const app = {
   },
   port,
   host,
-  uri: `http://${host}:${port}`,
   env,
+  get uri() {
+    return `http://${host}:${port}`;
+  },
   isVerbose: verbose,
   isDev: env === ENVS.DEV,
-  isProd: env === ENVS.PROD
+  isProd: env === ENVS.PROD,
+  api: {
+    limit: 100
+  }
 };
 
 export default app;

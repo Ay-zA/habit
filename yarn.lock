@@ -5126,6 +5126,10 @@ parse-json@^2.2.0:
   dependencies:
     error-ex "^1.2.0"
 
+parse-stack@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/parse-stack/-/parse-stack-0.1.4.tgz#5295dedb8320d0d9c4a04b46d5b8d0f97d4a9e3e"
+
 parse5@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-1.5.1.tgz#9b7f3b0de32be78dc2401b17573ccaf0f6f59d94"
