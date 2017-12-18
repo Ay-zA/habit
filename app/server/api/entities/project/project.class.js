@@ -3,12 +3,12 @@ import ApiError from '@/utils/api-error';
 import { app } from '~/configs';
 
 export default class ProjectClass {
-  static get(id) {
-    return this.findById(id)
+  static get(id, fields) {
+    return this.findById(id, fields)
       .exec()
-      .then((user) => {
-        if (user) {
-          return user;
+      .then((project) => {
+        if (project) {
+          return project;
         }
 
         const err = new ApiError('Project not found!', HTTPStatus.NOT_FOUND, true);
