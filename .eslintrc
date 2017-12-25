@@ -4,7 +4,7 @@
   "env": {
     "browser": true,
     "node": true,
-    "jasmine": true
+    "jest": true
   },
 
   "plugins": ["flowtype"],
@@ -17,6 +17,7 @@
   },
 
   "rules": {
+    "no-plusplus": 0,
     "arrow-parens": [1, "as-needed", { "requireForBlockBody": true }],
     "comma-dangle": [1, "never"],
     "consistent-return": 0,
