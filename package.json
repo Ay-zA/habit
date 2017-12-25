@@ -4,13 +4,13 @@
   "description": "I'll just remind you habits",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint app --ext .jsx,.js",
     "clean": "rimraf ./build",
+    "lint": "eslint app --ext .jsx,.js",
+    "lint:server": "eslint app/server --ext .js,.jsx",
+    "lint:client": "eslint app/client --ext .js,.jsx",
     "build:watch": "npm run clean && cross-env NODE_ENV=development webpack -d --watch",
-    "build:dev":
-      "npm run clean && cross-env NODE_ENV=development webpack --config webpack.config.dev.babel.js -d",
-    "build:prod":
-      "npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.babel.js -p",
+    "build:dev": "npm run clean && cross-env NODE_ENV=development webpack --config webpack.config.dev.babel.js -d",
+    "build:prod": "npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.babel.js -p",
     "server:dev": "cross-env NODE_ENV=dev node app/index.js --open",
     "server:node": "cross-env NODE_ENV=node webpack --watch",
     "server:prod": "cross-env NODE_ENV=prod node app/index.js",
@@ -22,18 +22,28 @@
     "type": "git",
     "url": "git+ssh://git@github.com/frontendmonster/habit.git"
   },
-  "keywords": ["habit", "todo", "reminder", "cross-platform", "minimal"],
+  "keywords": [
+    "habit",
+    "todo",
+    "reminder",
+    "cross-platform",
+    "minimal"
+  ],
   "author": "S-Kill <frontendmonster@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/frontendmonster/habit/issues"
   },
-  "engines": ">=8.9.0",
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "homepage": "https://github.com/frontendmonster/habit#readme",
   "jest": {
     "rootDir": "./app/server/api/",
     "testEnvironment": "jest-environment-node",
-    "collectCoverageFrom": ["*.js"],
+    "collectCoverageFrom": [
+      "*.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 0,
@@ -70,9 +80,11 @@
     "dotenv": "^4.0.0",
     "expect": "^21.2.1",
     "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "flow-bin": "^0.60.1",
+    "graphql": "^0.12.3",
     "helmet": "^3.9.0",
     "html-webpack-plugin": "^2.30.1",
     "http-status": "^1.0.1",
