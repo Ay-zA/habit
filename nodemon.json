@@ -11,8 +11,14 @@
     "configs/",
     "app.config.json",
     "webpack.config.dev.babel.js",
-    "webpack.config.prod.babel.js"
+    "webpack.config.prod.babel.js",
+    "app/server/api/**/*.model.js",
+    "app/server/api/**/*.class.js"
   ],
-  "ignore": ["app/server/api"],
+  "ignore": [
+    "app/server/api/**/*.controller.js",
+    "app/server/api/**/*.routes.js",
+    "app/server/api/**/*.validator.js"
+  ],
   "ext": "js json"
 }
