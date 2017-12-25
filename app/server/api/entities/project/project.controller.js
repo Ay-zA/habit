@@ -1,5 +1,13 @@
 import Project from './project.model';
 
+export const getProjectIdFromParam = async (req, res, next, id) => {
+  if (id) {
+    req.projectId = id;
+  }
+
+  next();
+};
+
 export const getProjects = async (req, res, next) => {
   try {
     const projects = await Project.list();
@@ -11,9 +19,7 @@ export const getProjects = async (req, res, next) => {
 
 export const getProject = async (req, res, next) => {
   try {
-    const { proj_id } = req.params;
-
-    const project = await Project.get(proj_id);
+    const project = await Project.get(req.projectId);
 
     if (project == null) {
       res.status(404).send({ message: 'not found' });
@@ -36,9 +42,7 @@ export const addProject = async (req, res, next) => {
 
 export const deleteProject = async (req, res, next) => {
   try {
-    const { proj_id } = req.params;
-
-    const project = await Project.remove(proj_id);
+    const project = await Project.remove(req.projectId);
 
     res.json({ message: 'deleted', id: project._id });
   } catch (e) {

@@ -29,4 +29,11 @@ export default class ProjectClass {
       .then(project => project.remove())
       .catch(e => Promise.reject(e));
   }
+
+  static async getTasks(id) {
+    const project = await this.findById(id, { tasks: 1, _id: 0 })
+      .populate('tasks')
+      .exec();
+    return project.tasks;
+  }
 }
