@@ -28,6 +28,7 @@
     "no-underscore-dangle": 0,
     "no-unused-vars": [1, {"args": "none"}],
     "object-curly-newline": [1, { "consistent": true }],
+    "max-len": 0,
 
     "import/extensions": 0,
     "import/no-unresolved": 0,
