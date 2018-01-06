@@ -57,6 +57,7 @@ export default {
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.graphql$/, exclude: /node_modules/, loader: 'graphql-loader' },
       {
         test: /(\.css|\.scss|\.sass)$/,
         loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')

@@ -10,12 +10,7 @@ const GLOBALS = {
 export default {
   devtool: '#eval-source-map',
   target: 'web',
-  entry: [
-    'babel-polyfill',
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=false',
-    pathes.clientMain
-  ],
+  entry: ['babel-polyfill', 'react-hot-loader/patch', 'webpack-hot-middleware/client?reload=false', pathes.clientMain],
   output: {
     path: pathes.build,
     publicPath: '/',
@@ -53,14 +48,29 @@ export default {
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, use: ['react-hot-loader/webpack', 'babel-loader'] },
+      { test: /\.graphql$/, exclude: /node_modules/, loader: 'graphql-loader' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'application/font-woff' } },
-      { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'application/octet-stream' } },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader',
+        query: { limit: 10000, mimetype: 'application/font-woff' }
+      },
+      {
+        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
+        loader: 'url-loader',
+        query: { limit: 10000, mimetype: 'application/octet-stream' }
+      },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'image/svg+xml' } },
-      { test: /\.(jpe?g|png|gif|ico)$/i, loader: 'file-loader', query: { limit: 10000, name: pathes.resolveBuild('assets/img/[name].[hash:7].[ext]') } },
+      {
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        loader: 'file-loader',
+        query: { limit: 10000, name: pathes.resolveBuild('assets/img/[name].[hash:7].[ext]') }
+      },
       {
         test: /(\.css|\.scss|\.sass)$/,
-        loaders: ['style-loader', 'css-loader',
+        loaders: [
+          'style-loader',
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -78,9 +88,6 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    modules: [
-      pathes.app,
-      pathes.appNodeModules
-    ]
+    modules: [pathes.app, pathes.appNodeModules]
   }
 };
