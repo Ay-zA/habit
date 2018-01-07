@@ -1,5 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
-import TaskClass from './task.class';
+import mongoose from 'mongoose';
+import { TaskClass } from './task.class';
+
+const { Schema } = mongoose;
 
 const TaskSchema = new Schema(
   {
@@ -10,5 +12,4 @@ const TaskSchema = new Schema(
 );
 TaskSchema.loadClass(TaskClass);
 
-const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);
-export default Task;
+export const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);

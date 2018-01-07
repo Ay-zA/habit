@@ -1,4 +1,4 @@
-import Project from './project.model';
+import { Project } from './project.model';
 
 export const getProjectIdFromParam = async (req, res, next, id) => {
   if (id) {

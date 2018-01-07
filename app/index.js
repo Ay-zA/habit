@@ -3,4 +3,6 @@ require('babel-register');
 require('babel-polyfill');
 
 clear();
-require('./server/server.js');
+const server = require('./server');
+
+server.start();

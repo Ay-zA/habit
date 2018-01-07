@@ -7,7 +7,7 @@ import { app as config, pathes } from '~/configs';
 import morgan from '@/utils/morgan';
 // import webpack from './webpack.middleware';
 
-const configMiddlewares = (app) => {
+const addMiddlewares = (app) => {
   if (config.isDev) {
     app.use(morgan);
     // app.use(webpack.devMiddleware);
@@ -26,4 +26,6 @@ const configMiddlewares = (app) => {
 };
 
 export { default as webpack } from './webpack.middleware';
-export default configMiddlewares;
+export { addGraphQL } from './graphql.middleware';
+export { addErrorHandlers } from './error-handler.middlewares';
+export default addMiddlewares;

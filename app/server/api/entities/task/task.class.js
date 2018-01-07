@@ -1,8 +1,8 @@
 import HTTPStatus from 'http-status';
 import ApiError from '@/utils/api-error';
-import { app } from '~/configs';
+import { apiConfig } from '@/api/config';
 
-export default class TaskClass {
+export class TaskClass {
   static get(id) {
     return this.findById(id)
       .exec()
@@ -16,7 +16,7 @@ export default class TaskClass {
       });
   }
 
-  static list({ skip = 0, limit = app.api.limit } = {}) {
+  static list({ skip = 0, limit = apiConfig.limit } = {}) {
     return this.find()
       .sort({ createdAt: -1 })
       .skip(+skip)

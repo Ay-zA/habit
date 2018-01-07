@@ -24,7 +24,7 @@ deepFreeze(initialState);
 deepFreeze(todosActions);
 
 describe('Todos:', () => {
-  it('Add todo', () => {
+  it.skip('Add todo', () => {
     const action = todosActions.addTodo({ title: 'Todo 5', _id: 5 });
     const expectedState = [
       {
@@ -51,7 +51,7 @@ describe('Todos:', () => {
 
     expect(todosReducer(initialState, action)).toEqual(expectedState);
   });
-  it('Remove todo', () => {
+  it.skip('Remove todo', () => {
     const action = todosActions.removeTodo(2);
     const expectedState = [
       {
@@ -68,7 +68,7 @@ describe('Todos:', () => {
 
     expect(todosReducer(initialState, action)).toEqual(expectedState);
   });
-  it('Toggle todo', () => {
+  it.skip('Toggle todo', () => {
     const action = todosActions.toggleTodo(1);
     const expectedState = [
       {

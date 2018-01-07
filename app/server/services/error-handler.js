@@ -31,7 +31,7 @@ export function handleConnectionClose() {
   });
 }
 
-export function handleClientErrors(err, req, res, next) {
+export function handleApiErrors(err, req, res, next) {
   const error = new APIError(err.message, err.status, err.isPublic, err);
 
   const resError = {

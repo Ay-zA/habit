@@ -1,7 +1,7 @@
 import HTTPStatus from 'http-status';
 import ApiError from '@/utils/api-error';
-import Task from './task.model';
-import Project from '../project.model';
+import { Task } from './task.model';
+import { Project } from '../project';
 
 export const getTasks = async (req, res, next) => {
   try {

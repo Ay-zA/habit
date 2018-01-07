@@ -1,5 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
-import ProjectClass from './project.class';
+import mongoose from 'mongoose';
+import { ProjectClass } from './project.class';
+
+const { Schema } = mongoose;
 
 const ProjectSchema = new Schema(
   {
@@ -11,5 +13,4 @@ const ProjectSchema = new Schema(
 
 ProjectSchema.loadClass(ProjectClass);
 
-const Project = mongoose.models.Project || mongoose.model('Project', ProjectSchema);
-export default Project;
+export const Project = mongoose.models.Project || mongoose.model('Project', ProjectSchema);
