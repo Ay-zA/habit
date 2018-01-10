@@ -17,6 +17,10 @@ export const ForbiddenError = createError('ForbiddenError', {
   message: 'Forbidden!'
 });
 
+export const AlreadyExisted = createError('AlreadyExisted', {
+  message: 'User already existed'
+});
+
 export const formatError = (error) => {
   let e = apolloFormatError(error);
 

@@ -26,6 +26,5 @@ const addMiddlewares = (app) => {
 };
 
 export { default as webpack } from './webpack.middleware';
-export { addGraphQL } from './graphql.middleware';
 export { addErrorHandlers } from './error-handler.middlewares';
 export default addMiddlewares;

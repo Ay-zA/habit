@@ -7,7 +7,7 @@ const UserSchema = new Schema(
   {
     email: {
       type: String,
-      unique: true,
+      unique: [true, 'User already existed'],
       trim: true,
       required: [true, 'Email is required!'],
       lowercase: true

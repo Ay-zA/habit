@@ -1,6 +1,6 @@
 import { isInstance } from 'apollo-errors';
 import { createResolver } from 'apollo-resolvers';
-import { AlreadyAuthenticatedError, UnauthorizedError, UnknownError } from './errors';
+import { AlreadyAuthenticatedError, UnauthorizedError, UnknownError } from '../errors';
 
 export const baseResolver = createResolver(null, (root, args, context, err) => {
   if (isInstance(err)) {

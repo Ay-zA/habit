@@ -1,9 +1,9 @@
 import { combineResolvers } from 'apollo-resolvers';
 
 import User from './user.resolver';
+import projectResolver from './project.resolver';
 
-const resolvers = combineResolvers([
-  User
+export const resolvers = combineResolvers([
+  User,
+  projectResolver
 ]);
-
-export default resolvers;

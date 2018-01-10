@@ -1,21 +1,9 @@
+import fs from 'fs';
+import path from 'path';
 import { makeExecutableSchema } from 'graphql-tools';
-import { projectResolver } from './resolvers/project.resolver';
+import { resolvers } from './resolvers';
 
-const typeDefs = `
-  type Task {
-    id: ID!
-    title: String!
-  }
+const schemaFile = path.join(__dirname, 'schema.graphql');
+const typeDefs = fs.readFileSync(schemaFile, 'utf8');
 
-  type Project {
-    id: ID!
-    title: String!
-    tasks: [Task]!
-  }
-
-  type Query {
-    allProjects: [Project]
-  }
-`;
-
-export default makeExecutableSchema({ typeDefs, resolvers: projectResolver });
+export default makeExecutableSchema({ typeDefs, resolvers });
