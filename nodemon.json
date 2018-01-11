@@ -21,5 +21,5 @@
     "app/server/api/**/*.routes.js",
     "app/server/api/**/*.validator.js"
   ],
-  "ext": "js json"
+  "ext": "js json graphql"
 }

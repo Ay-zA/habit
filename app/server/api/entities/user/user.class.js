@@ -25,6 +25,17 @@ export class UserClass {
       .exec();
   }
 
+  static async authenticate(email, password) {
+    const user = await this.findOne({ email: email.toLowerCase() });
+
+    if (!user) {
+      return null;
+    }
+
+    const isAuthenticated = user.authenticate(password);
+    return isAuthenticated ? user : null;
+  }
+
   getFullName() {
     return `${this.firstName} ${this.lastName}`;
   }
@@ -40,10 +51,12 @@ export class UserClass {
 
   toAuthJSON() {
     return {
-      id: this._id,
-      email: this.email,
-      name: this.name,
-      token: `Bearer ${this.createToken()}`
+      token: `Bearer ${this.createToken()}`,
+      user: {
+        id: this._id,
+        email: this.email,
+        name: this.name
+      }
     };
   }
 

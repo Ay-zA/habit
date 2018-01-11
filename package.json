@@ -14,7 +14,7 @@
     "server:dev": "cross-env NODE_ENV=dev node app/index.js --open",
     "server:node": "cross-env NODE_ENV=node webpack --watch",
     "server:prod": "cross-env NODE_ENV=prod node app/index.js",
-    "start": "cross-env NODE_ENV=development && nodemon -q app/index.js --port 80",
+    "start": "cross-env NODE_ENV=development && nodemon -q app/index.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
@@ -69,6 +69,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "graphql": "^0.11.7",
+    "graphql-import": "^0.3.1",
     "graphql-tag": "^2.6.1",
     "graphql-tools": "^2.16.0",
     "helmet": "^3.9.0",

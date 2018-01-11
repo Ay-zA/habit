@@ -17,8 +17,12 @@ export const ForbiddenError = createError('ForbiddenError', {
   message: 'Forbidden!'
 });
 
-export const AlreadyExisted = createError('AlreadyExisted', {
-  message: 'User already existed'
+export const NotFoundError = createError('NotFoundError', {
+  message: 'Resource Not Found'
+});
+
+export const AlreadyExistedError = createError('AlreadyExistedError', {
+  message: 'Resource already existed'
 });
 
 export const formatError = (error) => {
