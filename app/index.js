@@ -1,8 +1,3 @@
-const clear = require('clear-it');
-require('babel-register');
-require('babel-polyfill');
+import { start } from './server';
 
-clear();
-const server = require('./server');
-
-server.start();
+start();

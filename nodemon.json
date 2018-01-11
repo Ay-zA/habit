@@ -1,25 +1,15 @@
 {
   "restartable": "rs",
   "verbose": false,
-  "execMap": {
-    "js": "node"
-  },
   "watch": [
     "app/index.js",
-    "app/server/",
-    "app/server/**/*.graphql",
+    "app/server/index.js",
     "package.json",
-    "configs/",
     "app.config.json",
+    "webpack.config.server.babel.js",
     "webpack.config.dev.babel.js",
-    "webpack.config.prod.babel.js",
-    "app/server/api/**/*.model.js",
-    "app/server/api/**/*.class.js"
+    "webpack.config.prod.babel.js"
   ],
-  "ignore": [
-    "app/server/api/**/*.controller.js",
-    "app/server/api/**/*.routes.js",
-    "app/server/api/**/*.validator.js"
-  ],
+  "ignore": [],
   "ext": "js json graphql"
 }

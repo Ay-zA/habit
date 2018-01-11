@@ -12,4 +12,5 @@ const TaskSchema = new Schema(
 );
 TaskSchema.loadClass(TaskClass);
 
-export const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);
+delete mongoose.connection.models.Task;
+export const Task = mongoose.model('Task', TaskSchema);

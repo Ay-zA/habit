@@ -13,4 +13,5 @@ const ProjectSchema = new Schema(
 
 ProjectSchema.loadClass(ProjectClass);
 
-export const Project = mongoose.models.Project || mongoose.model('Project', ProjectSchema);
+delete mongoose.connection.models.Project;
+export const Project = mongoose.model('Project', ProjectSchema);

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import userRoutes from './entities/user/user.routes';
+import { userRoutes } from './entities/user';
 import { projectRoutes } from './entities/project';
 
 const apiRouter = new Router();

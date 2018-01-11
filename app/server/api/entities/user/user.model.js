@@ -35,4 +35,5 @@ UserSchema.pre('save', function (next) {
 
 UserSchema.loadClass(UserClass);
 
-export const User = mongoose.models.User || mongoose.model('User', UserSchema);
+delete mongoose.connection.models.User;
+export const User = mongoose.model('User', UserSchema);

@@ -1,7 +1,6 @@
 import express from 'express';
 import addMiddlewares, { webpack, addErrorHandlers } from '@/middlewares';
 import { app as config, pathes } from '~/configs';
-import '@/utils/watcher';
 import { graphqlServer } from '@/graphql';
 
 const app = express();

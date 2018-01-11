@@ -1,7 +1,7 @@
 {
   "root": "app",
   "main": "index.js",
-  "outDir": "build",
+  "outDir": "dist",
   "publicDir": "public",
   "wds": {
     "host": "127.0.0.1",

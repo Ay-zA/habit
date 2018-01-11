@@ -1,1 +1,2 @@
-export { Project } from './project.model.js';
+export { Project } from './project.model';
+export { default as projectRoutes } from './project.routes';
