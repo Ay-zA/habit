@@ -2,7 +2,7 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 
-import User from '@/api/entities/user/user.model';
+import { User } from '@/api/entities/user';
 
 const localOpts = { usernameField: 'email' };
 
