@@ -35,7 +35,7 @@ export function handleApiErrors(err, req, res, next) {
   const error = new APIError(err.message, err.status, err.isPublic, err);
 
   const resError = {
-    message: error.isPublic || app.isDev ? error.message : httpStatus[error.status],
+    message: error.isPublic || app.isDev ? error.message : httpStatus[error.status]
   };
 
   if (app.isDev && error.status >= 500) {

@@ -1,11 +1,5 @@
 import httpStatus from 'http-status';
-import parseStack from 'parse-stack';
-import { sep } from 'path';
-
-const jsonStack = (err) => parseStack(err).filter(stack => !stack.filepath.includes('node_modules')).map(stack => ({
-  name: stack.name,
-  filepath: `${stack.filepath.split(sep).join('/')} | ${stack.lineNumber}`
-}));
+import { jsonStack } from './json-stack';
 
 /**
  * @extends Error
@@ -22,7 +16,6 @@ class ExtendableError extends Error {
 
     this.parsedStack = jsonStack(orginalError || this);
   }
-
 }
 
 /**
@@ -36,7 +29,12 @@ class APIError extends ExtendableError {
    * @param {number} status - HTTP status code of error.
    * @param {boolean} isPublic - Whether the message should be visible to user or not.
    */
-  constructor(message, status = httpStatus.INTERNAL_SERVER_ERROR, isPublic = false, orginalError) {
+  constructor(
+    message,
+    status = httpStatus.INTERNAL_SERVER_ERROR,
+    isPublic = false,
+    orginalError
+  ) {
     super(message, status, isPublic, orginalError);
   }
 }
