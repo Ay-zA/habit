@@ -26,13 +26,14 @@
     "linebreak-style": 0,
     "no-mixed-operators": 0,
     "no-underscore-dangle": 0,
-    "no-unused-vars": [1, {"args": "none"}],
+    "no-unused-vars": [1, { "args": "none" }],
     "object-curly-newline": [1, { "consistent": true }],
     "max-len": 0,
 
     "import/extensions": 0,
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
 
     "jsx-a11y/href-no-hash": 0
   }

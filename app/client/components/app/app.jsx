@@ -1,11 +1,11 @@
 import React from 'react';
-import Todo from '../todo';
-import Header from '../header';
+import Header from '../Header';
+import About from '../About';
 
 const App = () => (
   <div>
     <Header />
-    <Todo />
+    <About />
   </div>
 );
 

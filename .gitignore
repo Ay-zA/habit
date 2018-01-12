@@ -9,10 +9,8 @@ coverage/
 /dist
 
 # dev tools
-/.imdone
+/.idea
 /.vscode
-.flowconfig
-.tern-project
 
 # misc
 .DS_Store
