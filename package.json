@@ -21,13 +21,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/frontendmonster/habit.git"
   },
-  "keywords": [
-    "habit",
-    "todo",
-    "reminder",
-    "cross-platform",
-    "minimal"
-  ],
+  "keywords": ["habit", "todo", "reminder", "cross-platform", "minimal"],
   "author": "S-Kill <frontendmonster@gmail.com>",
   "license": "ISC",
   "bugs": {
@@ -40,9 +34,7 @@
   "jest": {
     "rootDir": "./app/server/api/",
     "testEnvironment": "jest-environment-node",
-    "collectCoverageFrom": [
-      "*.js"
-    ],
+    "collectCoverageFrom": ["*.js"],
     "coverageThreshold": {
       "global": {
         "branches": 0,
