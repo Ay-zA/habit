@@ -2,9 +2,10 @@
   "presets": ["env", "flow", "stage-0", "react"],
   "retainLines": true,
   "plugins": [
+    "react-hot-loader/babel",
     "transform-regenerator",
     "transform-runtime",
-    "react-hot-loader/babel",
+    "transform-decorators-legacy",
     "babel-plugin-add-module-exports",
     [
       "module-resolver",

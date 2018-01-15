@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { gql } from 'apollo-client-preset';
+import { shape, bool, string } from 'prop-types';
 import Project from '../Project';
+import AllProjectsQuery from './AllProjects.graphql';
 
-const ProjectList = props => (
-  <div>
-    {!props.allProjectsQuery.loading &&
-      props.allProjectsQuery.allProjects.map(project => (
-        <Project key={project.id} title={project.title} />
-      ))}
-  </div>
-);
+@graphql(AllProjectsQuery, {
+  name: 'allProjectsQuery'
+})
+export default class ProjectList extends Component {
+  static propTypes = {
+    allProjectsQuery: shape({
+      loading: bool.isRequired,
+      allProjects: shape({
+        id: string.isRequired,
+        title: string.isRequired
+      })
+    }).isRequired
+  };
 
-const ALL_PROJECTS = gql`
-  {
-    allProjects {
-      id
-      title
-    }
+  render() {
+    return (
+      <div>
+        {!this.props.allProjectsQuery.loading &&
+          this.props.allProjectsQuery.allProjects.map(project => (
+            <Project key={project.id} title={project.title} />
+          ))}
+      </div>
+    );
   }
-`;
-
-export default graphql(ALL_PROJECTS, { name: 'allProjectsQuery' })(ProjectList);
+}
