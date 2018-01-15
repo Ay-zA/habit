@@ -1,5 +1,6 @@
 import { createExpressContext } from 'apollo-resolvers';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import ExpressPlaygroundMiddleware from 'graphql-playground-middleware-express';
 import { Router } from 'express';
 import * as models from '@/api/entities';
 import { formatError } from './errors';
@@ -16,3 +17,4 @@ const graphqlMiddleware = graphqlExpress((req, res) => {
 
 graphqlServer.use('/graphql', graphqlMiddleware);
 graphqlServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+graphqlServer.get('/playground', ExpressPlaygroundMiddleware({ endpoint: '/graphql' }));

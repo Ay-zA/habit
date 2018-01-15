@@ -5,13 +5,13 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import { app as config, pathes } from '~/configs';
 import morgan from '@/utils/morgan';
-// import webpack from './webpack.middleware';
+import webpack from './webpack.middleware';
 
 const addMiddlewares = (app) => {
   if (config.isDev) {
     app.use(morgan);
-    // app.use(webpack.devMiddleware);
-    // app.use(webpack.hotMiddleware);
+    app.use(webpack.devMiddleware);
+    app.use(webpack.hotMiddleware);
   }
 
   if (app.isProd) {

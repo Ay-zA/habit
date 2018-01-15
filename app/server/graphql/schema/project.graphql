@@ -1,0 +1,10 @@
+type Task {
+  id: ID!
+  title: String!
+}
+
+type Project {
+  id: ID!
+  title: String!
+  tasks: [Task]!
+}
