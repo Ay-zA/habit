@@ -7,7 +7,7 @@
     "jest": true
   },
 
-  "plugins": ["flowtype"],
+  "plugins": ["flowtype", "graphql"],
   "extends": ["plugin:flowtype/recommended", "airbnb"],
   "settings": {
     "react": {
