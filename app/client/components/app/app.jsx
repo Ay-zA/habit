@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../Header';
-import About from '../About';
+import ProjectList from '../ProjectList';
 
 const App = () => (
   <div>
     <Header />
-    <About />
+    <ProjectList />
   </div>
 );
 
