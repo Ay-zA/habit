@@ -1,8 +1,5 @@
 import { hashSync, compareSync } from 'bcrypt-nodejs';
-import HTTPStatus from 'http-status';
 import jwt from 'jsonwebtoken';
-import ApiError from '@/utils/api-error';
-import { apiConfig } from '@/api/config';
 
 export class UserClass {
   static get(id) {
@@ -12,12 +9,12 @@ export class UserClass {
         if (user) {
           return user;
         }
-        const err = new ApiError('User not found!', HTTPStatus.NOT_FOUND);
+        const err = new Error('User not found!');
         return Promise.reject(err);
       });
   }
 
-  static list({ skip = 0, limit = apiConfig.limit } = {}) {
+  static list({ skip = 0, limit = 100 } = {}) {
     return this.find()
       .sort({ createdAt: -1 })
       .skip(+skip)

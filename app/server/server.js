@@ -1,19 +1,18 @@
 import express from 'express';
-import addMiddlewares, { webpack, addErrorHandlers } from '@/middlewares';
-import { app as config, pathes } from '~/configs';
-import { graphqlServer } from '@/graphql';
+import addMiddlewares, { webpackIndex, addErrorHandlers } from '@/middlewares';
+import { GraphQLServer } from 'graphql-yoga';
+import * as models from '@/db';
+import { app, pathes } from '~/configs';
+import { resolvers } from './graphql/resolvers';
+import typeDefs from './graphql/schema/index.graphql';
 
-const app = express();
-addMiddlewares(app);
-app.use(graphqlServer);
+const context = req => ({ models });
+export const graphqlServer = new GraphQLServer({ typeDefs, resolvers, context });
 
-app.use(express.static(pathes.public));
-app.use('/api', (req, res, next) => require('@/api')(req, res, next));
+addMiddlewares(graphqlServer.express);
+graphqlServer.express.use(express.static(pathes.public));
+addErrorHandlers(graphqlServer.express);
 
-addErrorHandlers(app);
-
-if (config.isDev) {
-  app.get(/^(?!\/api).*/g, webpack.html);
+if (app.isDev) {
+  graphqlServer.express.get('/', webpackIndex);
 }
-
-export default app;

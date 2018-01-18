@@ -1,9 +1,15 @@
 import mongoose from 'mongoose';
 import logger from '@/utils/logger';
 import { app } from '~/configs';
-import { handleConnectionClose } from '@/services/error-handler';
 
 mongoose.Promise = global.Promise;
+
+const handleConnectionClose = () => {
+  mongoose.connection.close(() => {
+    logger.warn('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+  });
+};
 
 const connect = async () => {
   try {

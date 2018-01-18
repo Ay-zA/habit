@@ -1,29 +1,29 @@
-import http from 'http';
-import clear from 'clear-it';
+// import clear from 'clear-it';
 import connectDB from '@/db/mongoose';
-import { handleServerError } from '@/services/error-handler';
-import { logServerConfig } from '@/services/log.service';
-import { app as config } from '~/configs';
-import app from './server';
+// import { handleServerError } from '@/utils/error-handler';
+import { app } from '~/configs';
+// import { graphqlServer } from './server';
+import { graphqlServer } from './server';
+import logger from './utils/logger';
+import { formatError } from './graphql/errors';
+
+const logServerConfig = (config) => {
+  logger.success('Server listening at: ', app.uri);
+  logger.warn('Environment:', app.ENV);
+  logger.info('---');
+};
 
 export const start = async () => {
   await connectDB();
 
-  app.set('port', config.port);
-  const server = http.createServer(app);
-  let currentApp = app;
-
-  server.on('error', handleServerError);
-  server.on('listening', logServerConfig);
-  server.listen(config.port);
-
-  if (module.hot) {
-    module.hot.accept(['./server', './graphql'], () => {
-      const newApp = require('./server');
-      server.removeListener('request', currentApp);
-      server.on('request', newApp);
-      currentApp = newApp;
-      clear();
-    });
-  }
+  graphqlServer.start(
+    {
+      endpoint: '/graphql',
+      port: app.port,
+      debug: app.isDev,
+      playground: '/playground',
+      formatError
+    },
+    logServerConfig
+  );
 };

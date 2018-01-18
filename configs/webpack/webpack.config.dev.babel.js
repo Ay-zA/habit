@@ -1,7 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
-import { pathes } from './configs';
+import { pathes } from '~/configs';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development')

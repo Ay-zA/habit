@@ -1,8 +1,5 @@
-import { errors as celebrateErrors } from 'celebrate';
-import { handleApiErrors, prettyErrors } from '@/services/error-handler';
+import { prettyErrors } from '@/utils/pretty-error';
 
 export const addErrorHandlers = (app) => {
-  app.use(celebrateErrors());
-  app.use(handleApiErrors);
   app.use(prettyErrors);
 };

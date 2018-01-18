@@ -1,7 +1,3 @@
-import HTTPStatus from 'http-status';
-import ApiError from '@/utils/api-error';
-import { apiConfig } from '@/api/config';
-
 export class ProjectClass {
   static get(id, fields) {
     return this.findById(id, fields)
@@ -11,12 +7,12 @@ export class ProjectClass {
           return project;
         }
 
-        const err = new ApiError('Project not found!', HTTPStatus.NOT_FOUND, true);
+        const err = new Error('Project not found!');
         return Promise.reject(err);
       });
   }
 
-  static list({ skip = 0, limit = apiConfig.limit } = {}) {
+  static list({ skip = 0, limit = 100 } = {}) {
     return this.find()
       .sort({ createdAt: -1 })
       .skip(+skip)

@@ -14,14 +14,20 @@
     "build:dev": "npm run clean && cross-env NODE_ENV=development webpack --config webpack.config.dev.babel.js -d",
     "build:prod": "npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.babel.js -p",
     "prestart": "npm run clean",
-    "start": "nodemon --exec webpack -- --config webpack.config.server.babel.js",
+    "start": "nodemon --exec webpack",
     "dev": "webpack --config webpack.config.server.babel.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/frontendmonster/habit.git"
   },
-  "keywords": ["habit", "todo", "reminder", "cross-platform", "minimal"],
+  "keywords": [
+    "habit",
+    "todo",
+    "reminder",
+    "cross-platform",
+    "minimal"
+  ],
   "author": "S-Kill <frontendmonster@gmail.com>",
   "license": "ISC",
   "bugs": {
@@ -34,7 +40,9 @@
   "jest": {
     "rootDir": "./app/server/api/",
     "testEnvironment": "jest-environment-node",
-    "collectCoverageFrom": ["*.js"],
+    "collectCoverageFrom": [
+      "*.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 0,
@@ -55,7 +63,6 @@
     "babel-register": "^6.26.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
-    "celebrate": "^7.0.3",
     "chalk": "^2.3.0",
     "clear-it": "^1.0.0",
     "compression": "^1.7.1",
@@ -103,7 +110,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
-    "deep-freeze": "^0.0.1",
     "dotenv-webpack": "^1.5.4",
     "eslint": "^4.12.1",
     "eslint-config-airbnb": "^16.1.0",

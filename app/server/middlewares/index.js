@@ -2,10 +2,9 @@ import helmet from 'helmet';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import bodyParser from 'body-parser';
-import passport from 'passport';
 import { app as config, pathes } from '~/configs';
-import morgan from '@/utils/morgan';
-import webpack from './webpack.middleware';
+import morgan from './morgan.middleware';
+import * as webpack from './webpack.middleware';
 
 const addMiddlewares = (app) => {
   if (config.isDev) {
@@ -22,9 +21,8 @@ const addMiddlewares = (app) => {
   app.use(favicon(pathes.favicon));
   app.use(bodyParser.json({ limit: '20mb' }));
   app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
-  app.use(passport.initialize());
 };
 
-export { default as webpack } from './webpack.middleware';
+export { html as webpackIndex } from './webpack.middleware';
 export { addErrorHandlers } from './error-handler.middlewares';
 export default addMiddlewares;
