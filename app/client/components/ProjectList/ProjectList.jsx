@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { shape, bool, string } from 'prop-types';
+import AllProjectsQuery from '-/gql/AllProjects.gql';
 import Project from '../Project';
-import AllProjectsQuery from './AllProjects.graphql';
 
 @graphql(AllProjectsQuery, {
   name: 'allProjectsQuery'

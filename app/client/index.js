@@ -1,7 +1,7 @@
 import React from 'react';
 import { render as renderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Root from './components/Root';
+import Root from './components/_Root';
 import '../public/style.scss';
 
 const render = (Component) => {
@@ -17,8 +17,8 @@ const render = (Component) => {
 render(Root);
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const nextRoot = require('./components/Root');
+  module.hot.accept('./components/_Root', () => {
+    const nextRoot = require('./components/_Root');
     render(nextRoot);
   });
 }
