@@ -5,6 +5,7 @@ import StartServerPlugin from 'start-server-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 
 module.exports = {
+  devtool: 'sourcemap',
   entry: ['webpack/hot/poll?1000', './app'],
   watch: true,
   target: 'node',
@@ -40,6 +41,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new Dotenv(),
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install();',
+      raw: true,
+      entryOnly: false
+    }),
     new webpack.DefinePlugin({
       'process.env': { BUILD_TARGET: JSON.stringify('server') }
     })
