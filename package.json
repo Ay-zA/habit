@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "I'll just remind you habits",
   "main": "app/index.js",
-  "keywords": ["habit", "todo", "reminder", "cross-platform", "minimal"],
+  "keywords": [
+    "habit",
+    "todo",
+    "reminder",
+    "cross-platform",
+    "minimal"
+  ],
   "author": "S-Kill <frontendmonster@gmail.com>",
   "license": "ISC",
   "repository": {
@@ -38,6 +44,7 @@
     "clear-it": "^1.0.0",
     "compression": "^1.7.1",
     "express": "^4.16.2",
+    "express-jwt": "^5.3.0",
     "graphql": "git://github.com/graphql/graphql-js.git#npm",
     "graphql-yoga": "^1.2.0",
     "helmet": "^3.9.0",
@@ -110,7 +117,9 @@
   "jest": {
     "rootDir": "./app",
     "testEnvironment": "jest-environment-node",
-    "collectCoverageFrom": ["*.js"],
+    "collectCoverageFrom": [
+      "*.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 0,
@@ -121,6 +130,9 @@
     }
   },
   "lint-staged": {
-    "app/**/*.{js,jsx,json}": ["prettier-eslint --write", "git add"]
+    "app/**/*.{js,jsx,json}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   }
 }

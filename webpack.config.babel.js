@@ -21,10 +21,11 @@ module.exports = {
     ]
   },
   stats: {
+    colors: true,
+    assets: false,
     hash: false,
     version: false,
     timings: false,
-    assets: false,
     chunks: false,
     modules: false,
     reasons: false,
@@ -32,8 +33,9 @@ module.exports = {
     source: false,
     errors: true,
     errorDetails: false,
-    warnings: false,
-    publicPath: false
+    warnings: true,
+    publicPath: false,
+    chunkModules: false
   },
   plugins: [
     new StartServerPlugin('server.js'),

@@ -10,7 +10,12 @@ const GLOBALS = {
 export default {
   devtool: '#eval-source-map',
   target: 'web',
-  entry: ['babel-polyfill', 'react-hot-loader/patch', 'webpack-hot-middleware/client?reload=false', pathes.clientMain],
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?reload=false',
+    pathes.clientMain
+  ],
   output: {
     path: pathes.build,
     publicPath: '/',
@@ -47,7 +52,11 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, use: ['react-hot-loader/webpack', 'babel-loader'] },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['react-hot-loader/webpack', 'babel-loader']
+      },
       { test: /\.(graphql|gql)$/, exclude: /node_modules/, loader: 'graphql-tag/loader' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
       {
@@ -60,7 +69,11 @@ export default {
         loader: 'url-loader',
         query: { limit: 10000, mimetype: 'application/octet-stream' }
       },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader', query: { limit: 10000, mimetype: 'image/svg+xml' } },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        query: { limit: 10000, mimetype: 'image/svg+xml' }
+      },
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
         loader: 'file-loader',
@@ -89,5 +102,22 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     modules: [pathes.app, pathes.appNodeModules]
+  },
+  stats: {
+    colors: true,
+    assets: false,
+    hash: false,
+    version: false,
+    timings: false,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    children: false,
+    source: false,
+    errors: true,
+    errorDetails: false,
+    warnings: true,
+    publicPath: false,
+    chunkModules: false
   }
 };

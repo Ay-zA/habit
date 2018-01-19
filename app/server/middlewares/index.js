@@ -2,6 +2,7 @@ import { Router } from 'express';
 import helmet from 'helmet';
 import favicon from 'serve-favicon';
 import compression from 'compression';
+import expressJWT from 'express-jwt';
 import { app as config, pathes } from '~/configs';
 import morgan from './morgan.middleware';
 import prettyError from './pretty-error.middleware';
@@ -22,5 +23,9 @@ if (config.isProd) {
 }
 
 middlewares.use(favicon(pathes.favicon));
+middlewares.use(expressJWT({
+  credentialsRequired: false,
+  secret: process.env.JWT_SECRET
+}));
 
-export { html as webpackIndex } from './webpack.middleware';
+export { webpackHtml } from './webpack.middleware';

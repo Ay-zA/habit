@@ -4,7 +4,7 @@
   "quiet": true,
   "watch": [
     "app/index.js",
-    "app/server/index.js",
+    "app/server/*.{js,graphql}",
     "configs/**/*.js",
     "package.json",
     "app.config.json",

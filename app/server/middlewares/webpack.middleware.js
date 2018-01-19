@@ -2,13 +2,14 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMW from 'webpack-dev-middleware';
 import webpackHotMW from 'webpack-hot-middleware';
-import { webpackDevConfig, compilerOpts, hotOpts } from '~/configs/webpack';
+import { webpackDevConfig } from '~/configs/webpack';
 import logger from '@/utils/logger';
 import open from '@/utils/open';
 
 const compiler = webpack(webpackDevConfig);
-export const devMiddleware = webpackMW(compiler, compilerOpts);
-export const hotMiddleware = webpackHotMW(compiler, hotOpts);
+
+export const devMiddleware = webpackMW(compiler, { stats: webpackDevConfig.stats });
+export const hotMiddleware = webpackHotMW(compiler, { log: false });
 
 compiler.plugin('compilation', (compilation) => {
   compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
@@ -20,7 +21,7 @@ compiler.plugin('compilation', (compilation) => {
 
 const filename = path.join(compiler.outputPath, 'index.html');
 
-export const html = (req, res, next) => {
+export const webpackHtml = (req, res, next) => {
   devMiddleware.waitUntilValid(() => {
     devMiddleware.fileSystem.readFile(filename, (err, result) => {
       if (err) {
