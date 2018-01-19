@@ -2,9 +2,10 @@
 #import './auth.graphql'
 
 type Query {
-  allProjects: [Project]
-  allTasks: [Task]
-  allUsers: [User]
+  allProjects: [Project!]!
+  allTasks: [Task!]!
+  allUsers: [User!]!
+  profile: User!
 }
 
 type Mutation {

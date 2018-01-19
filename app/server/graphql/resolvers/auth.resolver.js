@@ -1,7 +1,7 @@
-import { createResolver } from 'apollo-resolvers';
 import { AlreadyExistedError, NotFoundError } from '../errors';
+import { isNotAuthenticatedResolver } from './alc.resovler';
 
-const signup = createResolver(
+const signup = isNotAuthenticatedResolver.createResolver(
   async (root, { data }, { models: { User } }) => {
     const user = new User(data);
     await user.save();
@@ -14,7 +14,7 @@ const signup = createResolver(
   }
 );
 
-const signin = createResolver(async (root, { data }, { models: { User } }) => {
+const signin = isNotAuthenticatedResolver.createResolver(async (root, { data }, { models: { User } }) => {
   const user = await User.authenticate(data.email, data.password);
   if (!user) {
     throw new NotFoundError({ data: { resource: 'User' } });
