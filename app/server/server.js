@@ -9,9 +9,9 @@ import typeDefs from './graphql/schema/index.graphql';
 const context = req => ({ models });
 
 export const graphqlServer = new GraphQLServer({ typeDefs, resolvers, context });
-graphqlServer.express.use(middlewares);
-graphqlServer.express.use(express.static(pathes.public));
+graphqlServer.use(middlewares);
+graphqlServer.use(express.static(pathes.public));
 
 if (app.isDev) {
-  graphqlServer.express.get('/', webpackIndex);
+  graphqlServer.get('/', webpackIndex);
 }

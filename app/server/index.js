@@ -1,4 +1,3 @@
-// import clear from 'clear-it';
 import connectDB from '@/db/mongoose';
 import { app } from '~/configs';
 import { graphqlServer } from './server';
@@ -18,11 +17,11 @@ export const start = async () => {
     {
       endpoint: '/graphql',
       playground: '/playground',
+      subscriptions: '/graphql',
       port: app.port,
       debug: app.isDev,
       formatError
     },
     logServerConfig
   );
-
 };
