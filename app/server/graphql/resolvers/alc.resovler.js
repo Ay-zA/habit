@@ -2,7 +2,7 @@ import { isInstance } from 'apollo-errors';
 import { createResolver } from 'apollo-resolvers';
 import { AlreadyAuthenticatedError, UnauthorizedError, UnknownError } from '../errors';
 
-export const baseResolver = createResolver(null, (root, args, context, err) => {
+export const baseResolver = createResolver(null, (root, args, ctx, err) => {
   if (isInstance(err)) {
     return err;
   }
@@ -13,10 +13,15 @@ export const baseResolver = createResolver(null, (root, args, context, err) => {
   });
 });
 
-export const isAuthenticatedResolver = baseResolver.createResolver((root, args, context) => {
-  if (!context.user) throw new UnauthorizedError();
+export const isAuthenticatedResolver = baseResolver.createResolver(async (root, args, ctx) => {
+  const user = await ctx.user;
+  if (!user) {
+    throw new UnauthorizedError();
+  } else {
+    ctx.user = user;
+  }
 });
 
-export const isNotAuthenticatedResolver = baseResolver.createResolver((root, args, context) => {
-  if (context.user) throw new AlreadyAuthenticatedError();
+export const isNotAuthenticatedResolver = baseResolver.createResolver((root, args, ctx) => {
+  if (ctx.user) throw new AlreadyAuthenticatedError();
 });
