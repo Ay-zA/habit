@@ -3,10 +3,6 @@
   "main": "index.js",
   "outDir": "dist",
   "publicDir": "public",
-  "wds": {
-    "host": "127.0.0.1",
-    "port": "8000"
-  },
   "client": {
     "dir": "client",
     "main": "index.js"

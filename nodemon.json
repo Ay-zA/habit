@@ -5,11 +5,10 @@
   "watch": [
     "app/index.js",
     "app/server/index.js",
+    "configs/**/*.js",
     "package.json",
     "app.config.json",
-    "webpack.config.server.babel.js",
-    "webpack.config.dev.babel.js",
-    "webpack.config.prod.babel.js"
+    "webpack.config.babel.js"
   ],
   "ignore": [],
   "ext": "js json graphql"
