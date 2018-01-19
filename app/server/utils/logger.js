@@ -26,7 +26,7 @@ class logger {
 
   static update = (path) => {
     winston.info(chProcessing('Updating: '), path);
-  }
+  };
 }
 
 export default logger;

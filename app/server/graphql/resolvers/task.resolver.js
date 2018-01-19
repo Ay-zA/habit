@@ -1,7 +1,6 @@
 import { createResolver } from 'apollo-resolvers';
 
-const allTasks = createResolver((root, args, { models: { Task } }) =>
-  Task.find());
+const allTasks = createResolver((root, args, { models: { Task } }) => Task.find());
 
 const createTask = createResolver(async (root, args, { models: { Project, Task } }) => {
   const task = new Task({ title: args.title });
