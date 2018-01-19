@@ -15,5 +15,5 @@ graphqlServer.use(middlewares);
 graphqlServer.use(express.static(pathes.public));
 
 if (app.isDev) {
-  graphqlServer.get('/^(?!/graphql).*/g', webpackHtml);
+  graphqlServer.get(/^(?!\/graphql).*/g, webpackHtml);
 }
