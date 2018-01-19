@@ -1,10 +1,9 @@
 import express from 'express';
 import { GraphQLServer } from 'graphql-yoga';
 import { app, pathes } from '~/configs';
-import { resolvers } from './graphql/resolvers';
-import * as models from './db';
+import { models } from './db';
 import { webpackIndex, middlewares } from './middlewares';
-import typeDefs from './graphql/schema/index.graphql';
+import { resolvers, typeDefs } from './graphql';
 
 const context = req => ({ models });
 

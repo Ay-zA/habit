@@ -1,3 +1,11 @@
-export { User } from './user';
-export { Project } from './project';
-export { Task } from './task';
+import { User } from './user';
+import { Project } from './project';
+import { Task } from './task';
+
+export const models = {
+  User,
+  Project,
+  Task
+};
+
+export { default } from './mongoose';
