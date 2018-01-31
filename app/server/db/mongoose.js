@@ -13,20 +13,21 @@ const handleConnectionClose = () => {
 
 const connect = async () => {
   try {
-    const connection = await mongoose.connect(app.dbConnectionURL, { useMongoClient: true });
+    await mongoose.connect(app.dbConnectionURL);
     logger.success('Mongoose connected to: ', app.dbConnectionURL);
 
-    connection.on('error', (err) => {
+    mongoose.connection.on('error', (err) => {
       logger.error('Mongoose default connection error: ', err);
     });
 
-    connection.on('disconnected', () => {
+    mongoose.connection.on('disconnected', () => {
       logger.warn('Mongoose default connection disconnected');
     });
 
     process.on('SIGINT', handleConnectionClose);
   } catch (err) {
     logger.error("Mongoose can't connect to: ", app.dbConnectionURL);
+    logger.error(err);
   }
 };
 
