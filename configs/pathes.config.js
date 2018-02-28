@@ -20,7 +20,7 @@ const resolvePublic = relativePath => path.resolve(publicDirectory, relativePath
 
 const buildDirectory = resolveRoot(app.outDir);
 
-const pathes = {
+export const pathesConfig = {
   appNodeModules: resolveRoot('node_modules'),
   resolveBuild: relativePath => path.resolve(buildDirectory, relativePath),
   resolvePublic,
@@ -29,12 +29,9 @@ const pathes = {
   public: publicDirectory,
   index: resolvePublic('index.html'),
   favicon: resolvePublic('favicon.ico'),
-  // assets: resolvePublic('assets'),
   sassIncludePath: resolvePublic('scss'),
   server: serverDirectory,
   serverMain: resolveServer(app.server.main),
   client: clientDirectory,
   clientMain: resolveClient(app.client.main)
 };
-
-export default pathes;

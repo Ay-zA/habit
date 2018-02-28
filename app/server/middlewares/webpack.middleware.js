@@ -4,7 +4,6 @@ import webpackMW from 'webpack-dev-middleware';
 import webpackHotMW from 'webpack-hot-middleware';
 import { webpackDevConfig } from '~/configs/webpack';
 import logger from '@/utils/logger';
-import open from '@/utils/open';
 
 const compiler = webpack(webpackDevConfig);
 
@@ -36,5 +35,4 @@ export const webpackHtml = (req, res, next) => {
 
 devMiddleware.waitUntilValid(() => {
   logger.success('Webpack: ', 'Client compiled with webpack.');
-  open();
 });

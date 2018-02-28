@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import logger from '@/utils/logger';
-import { app } from '~/configs';
 
 mongoose.Promise = global.Promise;
 
@@ -11,10 +10,10 @@ const handleConnectionClose = () => {
   });
 };
 
-const connect = async () => {
+const connect = async (config) => {
   try {
-    await mongoose.connect(app.dbConnectionURL);
-    logger.success('Mongoose connected to: ', app.dbConnectionURL);
+    await mongoose.connect(config.app.dbConnectionURL);
+    logger.success('Mongoose connected to: ', config.app.dbConnectionURL);
 
     mongoose.connection.on('error', (err) => {
       logger.error('Mongoose default connection error: ', err);
@@ -26,7 +25,7 @@ const connect = async () => {
 
     process.on('SIGINT', handleConnectionClose);
   } catch (err) {
-    logger.error("Mongoose can't connect to: ", app.dbConnectionURL);
+    logger.error("Mongoose can't connect to: ", config.app.dbConnectionURL);
     logger.error(err);
   }
 };

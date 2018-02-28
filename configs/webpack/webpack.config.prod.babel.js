@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
-import { pathes } from '~/configs';
+import config from '~/configs';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production')
@@ -11,9 +11,9 @@ const GLOBALS = {
 export default {
   devtool: 'source-map',
   target: 'web',
-  entry: ['babel-polyfill', pathes.clientMain],
+  entry: ['babel-polyfill', config.path.clientMain],
   output: {
-    path: pathes.build,
+    path: config.path.build,
     publicPath: '/',
     filename: '[name].[chunkhash].js',
     sourceMapFilename: '[name].[hash].map'
@@ -22,8 +22,8 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
-      template: pathes.index,
-      favicon: pathes.favicon,
+      template: config.path.index,
+      favicon: config.path.favicon,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -45,7 +45,7 @@ export default {
       noInfo: true, // set to false to see a list of every file being bundled.
       options: {
         sassLoader: {
-          includePaths: [pathes.sassIncludePath]
+          includePaths: [config.path.sassIncludePath]
         },
         context: '/',
         postcss: () => [autoprefixer]
@@ -81,6 +81,6 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    modules: [pathes.app, pathes.appNodeModules]
+    modules: [config.path.app, config.path.appNodeModules]
   }
 };

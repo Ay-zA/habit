@@ -1,7 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
-import { pathes } from '~/configs';
+import config from '~/configs';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development')
@@ -14,10 +14,10 @@ export default {
     'babel-polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=false',
-    pathes.clientMain
+    config.path.clientMain
   ],
   output: {
-    path: pathes.build,
+    path: config.path.build,
     publicPath: '/',
     filename: '[name].[hash].js',
     sourceMapFilename: '[name].[hash].map'
@@ -25,12 +25,12 @@ export default {
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
     new HtmlWebpackPlugin({
-      template: pathes.index,
+      template: config.path.index,
       minify: {
         removeComments: true,
         collapseWhitespace: true
       },
-      filename: pathes.resolveBuild('index.html'),
+      filename: config.path.resolveBuild('index.html'),
       inject: true
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -77,7 +77,7 @@ export default {
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
         loader: 'file-loader',
-        query: { limit: 10000, name: pathes.resolveBuild('assets/img/[name].[hash:7].[ext]') }
+        query: { limit: 10000, name: config.path.resolveBuild('assets/img/[name].[hash:7].[ext]') }
       },
       {
         test: /(\.css|\.scss|\.sass)$/,
@@ -93,7 +93,7 @@ export default {
           },
           {
             loader: 'sass-loader',
-            options: { includePaths: [pathes.sassIncludePath], sourceMap: true }
+            options: { includePaths: [config.path.sassIncludePath], sourceMap: true }
           }
         ]
       }
@@ -101,7 +101,7 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    modules: [pathes.app, pathes.appNodeModules]
+    modules: [config.path.app, config.path.appNodeModules]
   },
   stats: {
     colors: true,

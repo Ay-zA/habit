@@ -1,2 +1,9 @@
-export { default as pathes } from './pathes.config';
-export { default as app } from './app.config';
+import { pathesConfig } from './pathes.config';
+import { appConfig } from './app.config';
+import { envConfig } from './env.config';
+
+export default {
+  path: pathesConfig,
+  app: appConfig,
+  env: envConfig
+};
