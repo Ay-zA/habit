@@ -9,9 +9,7 @@ export const start = async (config) => {
     logger.warn('Environment:', config.app.ENV);
     logger.info('---');
   };
-  console.log('VUCK');
   await connectDB(config);
-  console.log('VUCK2');
   const graphqlServer = serverFactory(config);
   graphqlServer.start(
     {
