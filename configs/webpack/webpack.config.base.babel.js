@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
 import { pathes } from '<configs>';
 import rules from './webpack.loaders';
@@ -26,6 +27,7 @@ export default {
         removeComments: true,
         collapseWhitespace: true
       }
-    })
+    }),
+    new ProgressBarPlugin()
   ]
 };

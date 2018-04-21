@@ -99,6 +99,7 @@
     "nps-utils": "^1.5.0",
     "postcss-loader": "^2.1.4",
     "prettier-eslint-cli": "^4.7.1",
+    "progress-bar-webpack-plugin": "^1.11.0",
     "prop-types": "^15.6.1",
     "react-hot-loader": "^4.1.1",
     "sass-loader": "^7.0.1",

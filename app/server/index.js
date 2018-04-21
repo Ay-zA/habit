@@ -1,5 +1,5 @@
+import logger from '<utils>/logger';
 import serverFactory from './server';
-import logger from './utils/logger';
 import connectDB from './db';
 import { formatError } from './graphql';
 

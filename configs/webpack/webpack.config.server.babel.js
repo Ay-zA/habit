@@ -1,6 +1,7 @@
 import Dotenv from 'dotenv-webpack';
 import path from 'path';
 import StartServerPlugin from 'start-server-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
 import stats from './webpack.stats';
@@ -32,6 +33,7 @@ export default {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({ 'process.env': { BUILD_TARGET: JSON.stringify('server') } }),
     new webpack.BannerPlugin({ banner: 'require("source-map-support").install();', raw: true, entryOnly: false }),
+    new ProgressBarPlugin(),
     new Dotenv(),
     new StartServerPlugin('server.js')
   ],

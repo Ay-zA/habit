@@ -7,7 +7,10 @@ import logger from '<utils>/logger';
 
 const compiler = webpack(webpackDevConfig);
 
-export const devMiddleware = webpackMW(compiler, { stats: webpackDevConfig.stats });
+export const devMiddleware = webpackMW(compiler, {
+  stats: webpackDevConfig.stats,
+  logLevel: 'warn'
+});
 export const hotMiddleware = webpackHotMW(compiler, { log: false });
 
 compiler.hooks.compilation.tap('html-webpack-plugin-after-emit', () => {
