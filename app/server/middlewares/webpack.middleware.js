@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import webpackMW from 'webpack-dev-middleware';
 import webpackHotMW from 'webpack-hot-middleware';
 import webpackDevConfig from '<configs>/webpack';
-import logger from '<server>/utils/logger';
+import logger from '<utils>/logger';
 
 const compiler = webpack(webpackDevConfig);
 

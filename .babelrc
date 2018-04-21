@@ -26,7 +26,8 @@
           "~": "./",
           "<configs>": "./configs",
           "<server>": "./app/server",
-          "<client>": "./app/client"
+          "<client>": "./app/client",
+          "<utils>": "./utils"
         }
       }
     ]

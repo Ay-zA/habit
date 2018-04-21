@@ -1,5 +1,5 @@
 import morgan from 'morgan';
-import { chWarning, chError, chSuccess } from '<server>/utils/chalk';
+import { chWarning, chError, chSuccess } from '<utils>/chalk';
 
 export default morgan((tokens, req, res) => {
   const chStatus = tokens.status(req, res) === '200' ? chSuccess : chError;

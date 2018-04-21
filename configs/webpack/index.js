@@ -1,5 +1,6 @@
 import merge from 'webpack-merge';
 import { env as envConfig } from '<configs>';
+import logger from '<utils>/logger';
 import webpackBaseConfig from './webpack.config.base.babel';
 import webpackDevConfig from './webpack.config.dev.babel';
 import webpackProdConfig from './webpack.config.prod.babel';
@@ -15,7 +16,7 @@ switch (env) {
     config = merge(webpackBaseConfig, webpackProdConfig);
     break;
   default:
-    console.log('[WARN]: Environment for webpack config not matched'); // eslint-disable-line no-console
+    logger.warn('Environment for webpack config not matched');
     break;
 }
 
