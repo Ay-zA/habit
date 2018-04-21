@@ -27,19 +27,13 @@ export default {
     ]
   },
   plugins: [
-    new StartServerPlugin('server.js'),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({ 'process.env': { BUILD_TARGET: JSON.stringify('server') } }),
+    new webpack.BannerPlugin({ banner: 'require("source-map-support").install();', raw: true, entryOnly: false }),
     new Dotenv(),
-    new webpack.BannerPlugin({
-      banner: 'require("source-map-support").install();',
-      raw: true,
-      entryOnly: false
-    }),
-    new webpack.DefinePlugin({
-      'process.env': { BUILD_TARGET: JSON.stringify('server') }
-    })
+    new StartServerPlugin('server.js')
   ],
   stats
 };
