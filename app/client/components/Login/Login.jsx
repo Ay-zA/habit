@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
-import SigninMutation from '-/gql/SigninMutation.gql';
+import SigninMutation from '<client>/gql/SigninMutation.gql';
 import { func } from 'prop-types';
 
 @graphql(SigninMutation, { name: 'signinMutation' })
 class Login extends Component {
   static propTypes = {
-    signinMutation: func().isRequired
+    signinMutation: func.isRequired
   };
   state = {
     email: '',

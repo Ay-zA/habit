@@ -1,27 +1,33 @@
 {
   "presets": ["env", "flow", "stage-0", "react"],
   "retainLines": true,
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-inline-elements", ["transform-react-remove-prop-types", {
+          "ignoreFilenames": ["node_modules"]
+        }]
+      ]
+    },
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
+    }
+  },
   "plugins": [
-    "react-hot-loader/babel",
     "transform-regenerator",
     "transform-runtime",
     "transform-decorators-legacy",
-    "babel-plugin-add-module-exports",
-    [
+    "babel-plugin-add-module-exports", [
       "module-resolver",
       {
         "root": ["./"],
         "alias": {
           "~": "./",
-          "@": "./app/server",
-          "-": "./app/client"
+          "<configs>": "./configs",
+          "<server>": "./app/server",
+          "<client>": "./app/client"
         }
-      }
-    ],
-    [
-      "transform-react-remove-prop-types",
-      {
-        "ignoreFilenames": ["node_modules"]
       }
     ]
   ]

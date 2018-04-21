@@ -1,5 +1,5 @@
 import HTTPStatus from 'http-status';
-import ApiError from '@/utils/api-error';
+import ApiError from '<server>/utils/api-error';
 import { Task } from './task.model';
 import { Project } from '../project';
 

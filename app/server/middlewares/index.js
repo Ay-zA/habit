@@ -22,12 +22,11 @@ export default (config) => {
     middlewares.use(compression());
   }
 
-  middlewares.use(favicon(config.path.favicon));
+  middlewares.use(favicon(config.pathes.favicon));
   middlewares.use(expressJWT({
     credentialsRequired: false,
     secret: process.env.JWT_SECRET
   }));
-
   return middlewares;
 };
 

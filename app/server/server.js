@@ -12,11 +12,10 @@ export default (config) => {
 
   const graphqlServer = new GraphQLServer({ typeDefs, resolvers, context });
   graphqlServer.use(middlewaresFactory(config));
-  graphqlServer.use(express.static(config.path.public));
+  graphqlServer.use(express.static(config.pathes.public));
 
   if (config.env.isDev) {
     graphqlServer.get(/^(?!\/graphql).*/g, webpackHtml);
   }
-
   return graphqlServer;
 };

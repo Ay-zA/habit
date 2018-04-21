@@ -1,14 +1,20 @@
-import webpack from 'webpack';
-import path from 'path';
-import nodeExternals from 'webpack-node-externals';
-import StartServerPlugin from 'start-server-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import path from 'path';
+import StartServerPlugin from 'start-server-webpack-plugin';
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
+import stats from './webpack.stats';
+import { pathes } from '../index';
 
-module.exports = {
-  devtool: 'sourcemap',
-  entry: ['webpack/hot/poll?1000', './app'],
-  watch: true,
+export default {
+  devtool: 'cheap-module-source-map',
   target: 'node',
+  watch: true,
+  entry: ['webpack/hot/poll?1000', './app'],
+  output: {
+    path: path.join(pathes.rootDirectory, 'dist', 'server'),
+    filename: 'server.js'
+  },
   node: {
     __filename: true,
     __dirname: true
@@ -19,23 +25,6 @@ module.exports = {
       { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.graphql$/, loader: 'webpack-graphql-loader' }
     ]
-  },
-  stats: {
-    colors: true,
-    assets: false,
-    hash: false,
-    version: false,
-    timings: false,
-    chunks: false,
-    modules: false,
-    reasons: false,
-    children: false,
-    source: false,
-    errors: true,
-    errorDetails: false,
-    warnings: true,
-    publicPath: false,
-    chunkModules: false
   },
   plugins: [
     new StartServerPlugin('server.js'),
@@ -52,5 +41,5 @@ module.exports = {
       'process.env': { BUILD_TARGET: JSON.stringify('server') }
     })
   ],
-  output: { path: path.join(__dirname, 'dist'), filename: 'server.js' }
+  stats
 };

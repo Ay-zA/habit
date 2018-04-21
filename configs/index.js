@@ -3,7 +3,7 @@ import { appConfig } from './app.config';
 import { envConfig } from './env.config';
 
 export default {
-  path: pathesConfig,
+  pathes: pathesConfig,
   app: appConfig,
   env: envConfig
 };

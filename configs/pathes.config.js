@@ -1,9 +1,8 @@
 import path from 'path';
-import fs from 'fs';
 
 const app = require('~/app.config');
 
-const rootDirectory = fs.realpathSync(process.cwd());
+const rootDirectory = path.join(__dirname, '..');
 const resolveRoot = relativePath => path.resolve(rootDirectory, relativePath);
 
 const appDirectory = resolveRoot(app.root);
@@ -21,6 +20,7 @@ const resolvePublic = relativePath => path.resolve(publicDirectory, relativePath
 const buildDirectory = resolveRoot(app.outDir);
 
 export const pathesConfig = {
+  rootDirectory,
   appNodeModules: resolveRoot('node_modules'),
   resolveBuild: relativePath => path.resolve(buildDirectory, relativePath),
   resolvePublic,

@@ -10,7 +10,7 @@ module.exports = {
         description: 'Start Development Evnironment',
         script: series.nps('clean', 'dev.server')
       },
-      server: `${crossEnv('NODE_ENV=development')} nodemon --exec webpack`
+      server: `${crossEnv('NODE_ENV=development')} nodemon --exec webpack -- --config ./configs/webpack/webpack.config.server.babel.js --mode development`
     },
     lint: 'eslint app --ext .jsx,.js',
     test: {
