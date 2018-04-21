@@ -3,6 +3,7 @@ import helmet from 'helmet';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import expressJWT from 'express-jwt';
+import * as bodyParser from 'body-parser-graphql';
 import morgan from './morgan.middleware';
 import prettyError from './pretty-error.middleware';
 import * as webpack from './webpack.middleware';
@@ -22,12 +23,12 @@ export default (config) => {
     middlewares.use(compression());
   }
 
+  middlewares.use(bodyParser.graphql());
   middlewares.use(favicon(config.pathes.favicon));
   middlewares.use(expressJWT({
     credentialsRequired: false,
     secret: process.env.JWT_SECRET
   }));
+
   return middlewares;
 };
-
-export { webpackHtml } from './webpack.middleware';

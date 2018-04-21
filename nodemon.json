@@ -4,12 +4,13 @@
   "quiet": true,
   "watch": [
     "app/index.js",
-    "app/server/**/*.{js,graphql}",
     "configs/**/*.js",
     "package.json",
     "app.config.json",
     "webpack.config.babel.js"
   ],
-  "ignore": [],
+  "ignore": [
+    "app/server/**/*.{js,graphql}"
+  ],
   "ext": "js json graphql"
 }

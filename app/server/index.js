@@ -1,22 +1,21 @@
+import http from 'http';
 import logger from '<utils>/logger';
-import serverFactory from './server';
+import appFactory from './server';
 import connectDB from './db';
-import { formatError } from './graphql';
 
 export const start = async (config) => {
   await connectDB(config);
-  const graphqlServer = serverFactory(config);
-  graphqlServer.start(
-    {
-      endpoint: '/graphql',
-      playground: '/playground',
-      subscriptions: '/graphql',
-      port: config.app.port,
-      debug: config.app.isDev,
-      formatError
-    },
-    logServerConfig
-  );
+  let currentApp = appFactory(config);
+  const server = http.createServer(currentApp);
+  server.listen(config.app.port, logServerConfig);
+
+  if (module.hot) {
+    module.hot.accept(['./server', './graphql/index.js'], () => {
+      server.removeListener('request', currentApp);
+      currentApp = require('./server')(config);
+      server.on('request', currentApp);
+    });
+  }
 
   function logServerConfig() {
     logger.success('Server listening at: ', config.app.uri);

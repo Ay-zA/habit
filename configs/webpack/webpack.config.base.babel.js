@@ -28,6 +28,6 @@ export default {
         collapseWhitespace: true
       }
     }),
-    new ProgressBarPlugin()
+    new ProgressBarPlugin({ summary: false })
   ]
 };

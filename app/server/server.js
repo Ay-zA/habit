@@ -1,21 +1,14 @@
 import express from 'express';
-import { GraphQLServer } from 'graphql-yoga';
-import { models } from './db';
-import middlewaresFactory, { webpackHtml } from './middlewares';
-import { resolvers, typeDefs } from './graphql';
+import graphQLRouter from './graphql';
+import setupMiddlewares from './middlewares';
 
 export default (config) => {
-  const context = ({ request }) => {
-    const user = request.user ? models.User.findById(request.user.id) : Promise.resolve(null);
-    return { models, user };
-  };
+  const app = express();
+  const globalMiddlewares = setupMiddlewares(config);
 
-  const graphqlServer = new GraphQLServer({ typeDefs, resolvers, context });
-  graphqlServer.use(middlewaresFactory(config));
-  graphqlServer.use(express.static(config.pathes.public));
+  app.use(globalMiddlewares);
+  app.use(express.static(config.pathes.public));
+  app.use('/api', graphQLRouter, (req, res) => {});
 
-  if (config.env.isDev) {
-    graphqlServer.get(/^(?!\/graphql).*/g, webpackHtml);
-  }
-  return graphqlServer;
+  return app;
 };
