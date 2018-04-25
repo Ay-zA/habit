@@ -25,6 +25,7 @@
     "linebreak-style": 0,
     "max-len": 0,
     "no-mixed-operators": 0,
+    "no-multi-spaces": 0,
     "no-plusplus": 0,
     "no-underscore-dangle": 0,
     "no-unused-vars": [1, { "args": "none" }],
