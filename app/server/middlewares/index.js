@@ -1,9 +1,9 @@
+import * as bodyParser from 'body-parser-graphql';
+import compression from 'compression';
 import { Router } from 'express';
+import expressJWT from 'express-jwt';
 import helmet from 'helmet';
 import favicon from 'serve-favicon';
-import compression from 'compression';
-import expressJWT from 'express-jwt';
-import * as bodyParser from 'body-parser-graphql';
 import morgan from './morgan.middleware';
 import prettyError from './pretty-error.middleware';
 import * as webpack from './webpack.middleware';
