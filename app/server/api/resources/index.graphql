@@ -1,0 +1,18 @@
+#import './project/project.graphql'
+#import './auth/auth.graphql'
+#import './user/user.graphql'
+#import './task/task.graphql'
+
+type Query {
+  allProjects: [Project!]!
+  allTasks: [Task!]!
+  allUsers: [User!]!
+  profile: User!
+}
+
+type Mutation {
+  signin(data: LoginInput!): AuthPayload!
+  signup(data: UserCreateInput!): AuthPayload!
+  createProject(title: String!): Project
+  createTask(title: String!, projectID: ID!): Task!
+}
