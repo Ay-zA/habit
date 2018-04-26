@@ -3,8 +3,8 @@ const ENVS = {
   DEV: 'development'
 };
 const env = process.env.NODE_ENV || ENVS.DEV;
-const isDev = env === ENVS.DEV;
-const isProd = env === ENVS.PROD;
+const isDev = ENVS.DEV.includes(env);
+const isProd = ENVS.PROD.includes(env);
 
 export const envConfig = {
   env,
