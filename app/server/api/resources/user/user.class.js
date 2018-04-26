@@ -44,8 +44,7 @@ export class UserClass {
   }
 
   createToken() {
-    const tomorrow = Number(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
-    return jwt.sign({ id: this._id, exp: tomorrow }, process.env.JWT_SECRET);
+    return jwt.sign({ id: this._id, exp: process.env.TOKEN_EXPIRE_TIME }, process.env.JWT_SECRET);
   }
 
   toJSON() {
