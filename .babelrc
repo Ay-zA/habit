@@ -25,6 +25,7 @@
         "alias": {
           "~": "./",
           "<configs>": "./configs",
+          "<api>": "./app/server/api",
           "<server>": "./app/server",
           "<client>": "./app/client",
           "<utils>": "./utils"
