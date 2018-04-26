@@ -1,5 +1,5 @@
 import express from 'express';
-import graphQLRouter from './graphql';
+import graphQLRouter from '<api>';
 import setupMiddlewares from './middlewares';
 
 export default (config) => {
