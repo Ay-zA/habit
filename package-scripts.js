@@ -14,7 +14,7 @@ module.exports = {
     },
     lint: 'eslint app --ext .jsx,.js',
     test: {
-      default: `${crossEnv('NODE_ENV=test')} jest`,
+      default: `${crossEnv('NODE_ENV=test')} jest --config ./configs/jest.config.js`,
       watch: series.nps('test --watch'),
       cover: series.nps('test --coverage')
     }
