@@ -9,6 +9,6 @@ export default makeExecutableSchema({
   typeDefs,
   resolvers: {
     ...uploadMixin,
-    ...resolvers
-  }
+    ...resolvers,
+  },
 });

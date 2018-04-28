@@ -6,9 +6,9 @@ const createProject = isAuthenticatedResolver.createResolver((root, args, { mode
 
 export const projectResolvers = {
   Query: {
-    allProjects
+    allProjects,
   },
   Mutation: {
-    createProject
-  }
+    createProject,
+  },
 };

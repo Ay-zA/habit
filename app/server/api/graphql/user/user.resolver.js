@@ -9,9 +9,9 @@ const profile = isAuthenticatedResolver.createResolver((root, arg, ctx) => ctx.u
 export default {
   Query: {
     allUsers,
-    profile
+    profile,
   },
   User: {
-    name: root => root.name || root.email.match(/^([^@]*)@/)[1]
-  }
+    name: root => root.name || root.email.match(/^([^@]*)@/)[1],
+  },
 };

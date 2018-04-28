@@ -30,7 +30,7 @@ export default (config) => {
   middlewares.use(favicon(config.pathes.favicon));
   middlewares.use(expressJWT({
     credentialsRequired: false,
-    secret: process.env.JWT_SECRET
+    secret: process.env.JWT_SECRET,
   }));
 
   return middlewares;

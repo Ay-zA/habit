@@ -4,15 +4,15 @@ export default {
     unique: [true, 'User already existed!'],
     trim: true,
     required: [true, 'Email is required!'],
-    lowercase: true
+    lowercase: true,
   },
   name: {
     type: String,
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
     required: [true, 'Password is required!'],
-    minLength: [6, 'Password need to be longer!']
-  }
+    minLength: [6, 'Password need to be longer!'],
+  },
 };

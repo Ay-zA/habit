@@ -37,8 +37,8 @@ export class UserClass {
       user: {
         id: this._id,
         email: this.email,
-        name: this.name
-      }
+        name: this.name,
+      },
     };
   }
 
@@ -50,7 +50,7 @@ export class UserClass {
     return {
       id: this._id,
       email: this.email,
-      name: this.name
+      name: this.name,
     };
   }
 }

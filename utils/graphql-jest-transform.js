@@ -14,7 +14,7 @@ const resolveImportPathes = (importPathes, srcPath) =>
 const importContents = (resolvedImportPathes, src) =>
   resolvedImportPathes.reduce(
     (accumulator, importPath) => accumulator + fs.readFileSync(importPath).toString(),
-    src
+    src,
   );
 const exportContent = content => `module.exports = \`${content}\``;
 
@@ -36,5 +36,5 @@ module.exports = {
     const dist = exportContent(content);
 
     return dist;
-  }
+  },
 };

@@ -16,12 +16,12 @@ const createTask = isAuthenticatedResolver.createResolver(async (root, args, { m
 
 export default {
   Query: {
-    allTasks
+    allTasks,
   },
   Mutation: {
-    createTask
+    createTask,
   },
   Task: {
-    id: root => root._id.toString()
-  }
+    id: root => root._id.toString(),
+  },
 };

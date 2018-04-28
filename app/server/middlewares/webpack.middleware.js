@@ -8,7 +8,7 @@ const compiler = webpack(webpackDevConfig);
 
 export const devMiddleware = webpackMW(compiler, {
   stats: webpackDevConfig.stats,
-  logLevel: 'warn'
+  logLevel: 'warn',
 });
 
 devMiddleware.waitUntilValid(() => {
