@@ -7,4 +7,5 @@ process.on('unhandledRejection', (err) => {
   logger.error(err.stack);
 });
 
+clear();
 startServer(config);
