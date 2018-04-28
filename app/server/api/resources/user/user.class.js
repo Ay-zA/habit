@@ -1,5 +1,6 @@
 import { hashSync, compareSync, genSaltSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
+import { tomorrow } from '<utils>/date.helper';
 
 export class UserClass {
   static async authenticate(email, password) {
@@ -44,7 +45,7 @@ export class UserClass {
   }
 
   createToken() {
-    return jwt.sign({ id: this._id, exp: process.env.TOKEN_EXPIRE_TIME }, process.env.JWT_SECRET);
+    return jwt.sign({ id: this._id, exp: tomorrow }, process.env.JWT_SECRET);
   }
 
   toJSON() {
