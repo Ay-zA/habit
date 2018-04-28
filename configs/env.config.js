@@ -1,6 +1,7 @@
 const ENVS = {
   PROD: 'production',
-  DEV: 'development'
+  DEV: 'development',
+  TEST: 'test'
 };
 const env = process.env.NODE_ENV || ENVS.DEV;
 const isDev = ENVS.DEV.includes(env);
