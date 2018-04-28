@@ -2,3 +2,12 @@ type Task {
   id: ID!
   title: String!
 }
+
+input CreateTaskInput {
+  title: String!
+  project_id: ID!
+}
+
+type CreateTaskPayLoad {
+  task: Task!
+}

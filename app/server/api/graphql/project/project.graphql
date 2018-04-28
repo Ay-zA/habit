@@ -3,3 +3,12 @@ type Project {
   title: String!
   tasks: [Task]!
 }
+
+input CreateProjectInput {
+  title: String!
+}
+
+type CreateProjectPayload {
+  project: Project!
+}
+

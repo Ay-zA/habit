@@ -4,14 +4,15 @@ import logger from '<utils>/logger';
 import { AlreadyAuthenticatedError, UnauthorizedError, UnknownError } from './graphql.errors';
 
 export const baseResolver = createResolver(null, (root, args, ctx, err) => {
-  logger.error(err);
-
   if (isInstance(err)) {
     return err;
   }
 
+  logger.error(err);
+  logger.error(err.stack);
+
   return new UnknownError({
-    data: { name: err.name }
+    detail: { name: err.name },
   });
 });
 

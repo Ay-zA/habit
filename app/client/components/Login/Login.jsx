@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
-import SigninMutation from '<client>/gql/SigninMutation.gql';
+import LoginMutation from '<client>/gql/LoginMutation.gql';
 import { func } from 'prop-types';
 
-@graphql(SigninMutation, { name: 'signinMutation' })
+@graphql(LoginMutation, { name: 'loginMutation' })
 class Login extends Component {
   static propTypes = {
-    signinMutation: func.isRequired
+    loginMutation: func.isRequired,
   };
   state = {
     email: '',
-    password: ''
+    password: '',
   };
 
   handleFieldChange = ({ target }) => {
@@ -19,20 +19,20 @@ class Login extends Component {
     const { name } = target;
 
     this.setState(state => ({
-      [name]: value
+      [name]: value,
     }));
   };
 
-  handleSignin = async () => {
+  handleLogin = async () => {
     const { email, password } = this.state;
 
-    const authPayload = await this.props.signinMutation({
+    const authPayload = await this.props.loginMutation({
       variables: {
         email,
-        password
-      }
+        password,
+      },
     });
-    alert(authPayload.data.signin.token);
+    alert(authPayload.data.login.token);
   };
 
   render() {
@@ -50,7 +50,7 @@ class Login extends Component {
           value={this.state.password}
           onChange={this.handleFieldChange}
         />
-        <button onClick={this.handleSignin}>Signin</button>
+        <button onClick={this.handleLogin}>Login</button>
         <Link to="/signup">New User?</Link>
       </div>
     );

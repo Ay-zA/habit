@@ -11,8 +11,8 @@ type Query {
 }
 
 type Mutation {
-  signin(data: LoginInput!): AuthPayload!
-  signup(data: UserCreateInput!): AuthPayload!
-  createProject(title: String!): Project
-  createTask(title: String!, projectID: ID!): Task!
+  login(input: LoginInput!): AuthPayload!
+  createUser(input: CreateUserInput!): AuthPayload!
+  createProject(input: CreateProjectInput!): CreateProjectPayload!
+  createTask(input: CreateTaskInput!): CreateTaskPayLoad!
 }

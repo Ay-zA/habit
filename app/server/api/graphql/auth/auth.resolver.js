@@ -1,16 +1,16 @@
 import { isNotAuthenticatedResolver } from '<api>/modules/alc.resovler';
 import * as authController from './auth.controller';
 
-const signup = isNotAuthenticatedResolver.createResolver(
-  authController.signup,
-  authController.alreadyExistHandler
+const createUser = isNotAuthenticatedResolver.createResolver(
+  authController.createUser,
+  authController.alreadyExistHandler,
 );
 
-const signin = isNotAuthenticatedResolver.createResolver(authController.signin);
+const login = isNotAuthenticatedResolver.createResolver(authController.login);
 
 export const authResolvers = {
   Mutation: {
-    signup,
-    signin
-  }
+    createUser,
+    login,
+  },
 };
