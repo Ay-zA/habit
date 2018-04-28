@@ -6,12 +6,12 @@ import helmet from 'helmet';
 import favicon from 'serve-favicon';
 import morgan from './morgan.middleware';
 import prettyError from './pretty-error.middleware';
-import * as webpack from './webpack.middleware';
 
 export default (config) => {
   const middlewares = new Router();
 
   if (config.env.isDev) {
+    const webpack = require('./webpack.middleware');
     prettyError.start();
     middlewares.use(morgan);
     middlewares.use(webpack.devMiddleware);
