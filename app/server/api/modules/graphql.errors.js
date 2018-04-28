@@ -1,10 +1,30 @@
 import { GraphQLError } from 'graphql';
 import { formatError as apolloFormatError, createError } from 'apollo-errors';
 import ApiErrors from '<api>/errors';
+import { reduceMongooseValidationError } from '<utils>/validator.helper.js';
 
 export const UnknownError = createError(ApiErrors.UnknownError, {
   message: 'An unknown error has occurred',
+  data: {
+    code: 500,
+  },
 });
+
+export const CreateBadRequestError = (error) => {
+  let errors = [];
+
+  if (error.errors) {
+    errors = reduceMongooseValidationError(error);
+  }
+
+  return createError(ApiErrors.BadRequestError, {
+    message: 'Bad Request',
+    data: {
+      code: 400,
+      errors,
+    },
+  });
+};
 
 export const UnauthorizedError = createError(ApiErrors.UnauthorizedError, {
   message: 'You must login to continue',
@@ -22,7 +42,7 @@ export const CreateNotFoundError = resource =>
   createError(ApiErrors.NotFoundError, {
     message: `${resource} Not Found`,
     data: {
-      path: resource,
+      resource,
       status: 404,
     },
   });
@@ -31,7 +51,7 @@ export const CreateAlreadyExistedError = resource =>
   createError(ApiErrors.AlreadyExistedError, {
     message: `${resource} already existed`,
     data: {
-      path: resource,
+      resource,
       status: 409,
     },
   });

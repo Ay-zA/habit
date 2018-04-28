@@ -5,4 +5,5 @@ export default {
   ForbiddenError: 'ForbiddenError',
   NotFoundError: 'NotFoundError',
   AlreadyExistedError: 'AlreadyExistedError',
+  BadRequestError: 'BadRequestError',
 };
