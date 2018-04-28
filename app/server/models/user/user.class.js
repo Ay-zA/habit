@@ -1,4 +1,4 @@
-import { compareSync } from 'bcrypt-nodejs';
+import { compareSync } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { tomorrow } from '<utils>/date.helper';
 import { hashPassword } from '<utils>/enc.helper';
