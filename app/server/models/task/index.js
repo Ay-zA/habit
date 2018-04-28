@@ -1,15 +1,9 @@
 import mongoose from 'mongoose';
 import { TaskClass } from './task.class';
+import taskSchema from './task.schema';
 
-const { Schema } = mongoose;
+const TaskSchema = new mongoose.Schema(taskSchema, { timestamps: true });
 
-const TaskSchema = new Schema(
-  {
-    title: { type: String, index: true },
-    steps: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
-  },
-  { timestamps: true }
-);
 TaskSchema.loadClass(TaskClass);
 
 delete mongoose.connection.models.Task;

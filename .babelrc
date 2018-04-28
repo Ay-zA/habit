@@ -24,11 +24,12 @@
         "root": ["./"],
         "alias": {
           "~": "./",
+          "<utils>": "./utils",
           "<configs>": "./configs",
-          "<api>": "./app/server/api",
-          "<server>": "./app/server",
           "<client>": "./app/client",
-          "<utils>": "./utils"
+          "<server>": "./app/server",
+          "<api>": "./app/server/api",
+          "<models>": "./app/server/models"
         }
       }
     ]

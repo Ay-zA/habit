@@ -11,11 +11,14 @@ export default (config) => {
   const middlewares = new Router();
 
   if (config.env.isDev) {
-    const webpack = require('./webpack.middleware');
     prettyError.start();
     middlewares.use(morgan);
-    middlewares.use(webpack.devMiddleware);
-    middlewares.use(webpack.hotMiddleware);
+
+    if (!process.env.NO_CLIENT) {
+      const webpack = require('./webpack.middleware');
+      middlewares.use(webpack.devMiddleware);
+      middlewares.use(webpack.hotMiddleware);
+    }
   }
 
   if (config.env.isProd) {

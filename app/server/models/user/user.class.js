@@ -1,6 +1,7 @@
-import { hashSync, compareSync, genSaltSync } from 'bcrypt-nodejs';
+import { compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
 import { tomorrow } from '<utils>/date.helper';
+import { hashPassword } from '<utils>/enc.helper';
 
 export class UserClass {
   static async authenticate(email, password) {
@@ -22,11 +23,8 @@ export class UserClass {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  _hashPassword(password) {
-    const salt = genSaltSync(10);
-
-    return hashSync(password, salt);
+  hashPassword() {
+    this.password = hashPassword(this.password);
   }
 
   authenticate(password) {

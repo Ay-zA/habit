@@ -1,5 +1,5 @@
 import { dropDb } from '<utils>/test.helper';
-import { User } from '<api>/resources/user/user.model';
+import { User } from '<api>/resources/user';
 import controllers from './abstract-controller';
 
 describe('Modules', () => {

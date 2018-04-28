@@ -1,11 +1,15 @@
 import { isInstance } from 'apollo-errors';
 import { createResolver } from 'apollo-resolvers';
+import logger from '<utils>/logger';
 import { AlreadyAuthenticatedError, UnauthorizedError, UnknownError } from './graphql.errors';
 
 export const baseResolver = createResolver(null, (root, args, ctx, err) => {
+  logger.error(err);
+
   if (isInstance(err)) {
     return err;
   }
+
   return new UnknownError({
     data: { name: err.name }
   });
