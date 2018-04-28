@@ -23,4 +23,6 @@ export const startServer = async (config) => {
     logger.success('Server listening at: ', uri);
     logger.warn('Environment:', config.env.env);
   }
+
+  return server;
 };
