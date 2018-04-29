@@ -19,5 +19,5 @@ export const appConfig = {
   host,
   get uri() {
     return `http://${host}:${port}`;
-  }
+  },
 };
